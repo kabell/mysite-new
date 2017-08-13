@@ -1,8 +1,10 @@
 <div class='sidebar'>
     <ul id='nav'>
+    {% autoescape off %}
         {% for page in request|get_sidebar_menu %}
         <li><a href="{% if page.custom %}{{ page.page }}{% else %}{% url 'page' page.page %}{% endif %}">{{ page.label }}</a></li>
         {% endfor %}
+    {% endautoescape %}
     </ul>
     <div class="sidebar_blog">
     <div>
