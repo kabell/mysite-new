@@ -1,0 +1,2 @@
+a
+s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa// ; s/(.*)/\1a/

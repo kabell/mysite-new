@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+long long pole[1000000];
+int pocet=0;
+
+
+
+
+
+int main(){
+long long lol;
+
+while(cin>>lol){
+if(lol==0) break;
+
+int l1=0,l2=0,l3=0;
+
+
+
+while(lol%60==0){ lol/=60; l3++;}
+
+while(lol%40==0){ lol/=40; l2++;}
+
+
+while(lol%12==0){ lol/=12; l1++;}
+
+cout<<l1<<" "<<l2<<" "<<l3<<" "<<lol<<endl;
+if(lol==1 || lol==2 || lol==3 || lol==4 || lol==6 || lol==10 || lol==15 || lol==20 || lol==30) cout<<"ANO"<<endl; else cout<<"NIE"<<endl; 
+
+
+
+
+/*
+if(next(2,lol)==true){ cout<<"ANO"<<endl; continue;}
+
+else if(next(3,lol)==true){ cout<<"ANO"<<endl; continue;}
+else if(next(4,lol)==true){ cout<<"ANO"<<endl; continue;}
+
+else if(next(6,lol)==true){ cout<<"ANO"<<endl; continue;}
+else if(next(10,lol)==true){ cout<<"ANO"<<endl; continue;}
+else if(next(15,lol)==true){ cout<<"ANO"<<endl; continue;}
+else if(next(20,lol)==true){ cout<<"ANO"<<endl; continue;}
+else if(next(30,lol)==true){ cout<<"ANO"<<endl; continue;}
+
+else if(next(1,lol)==true){ cout<<"ANO"<<endl; continue;}
+cout<<"NIE"<<endl;
+*/
+
+
+}
+
+
+
+
+
+
+}

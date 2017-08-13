@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+#include <map>
+#include <vector>
+using namespace std;
+
+struct log1 {
+    bool ok;
+    string slovo;
+
+};
+
+
+
+vector< log1 > V;
+
+
+int main(){
+    long pocet = 0;
+    string slovo;
+
+    while(cin>>slovo){
+log1 p;
+p.ok=1;
+p.slovo=slovo;
+V.push_back(p);
+pocet++;
+ }   
+    
+int sum=0;
+while(sum<100000){
+int r=rand()%pocet;
+if(V[r].ok==1){
+V[r].ok=0;
+cout<<V[r].slovo<<".";
+sum+=V[r].slovo.length();
+}
+
+
+
+
+
+}
+
+    cin.get();
+    cin.get();
+    
+}

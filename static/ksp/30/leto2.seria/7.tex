@@ -1,0 +1,41 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 4.séria 4.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+Keď sa pozrieme na úlohu je to vlasne problém batohu, ktorý je np úplný.
+Riešenie vieme spraviť takzvaným Meet-in-the-middle attackom - je to metóda v štýle - vypočítame si všetky možné prípady prvkov z prvej polovice prvkov a zapíšeme si to najlepšie pre každú váhu do interváláča. Potom pre každý prípad z druhej polovice si vyhľadáme maximum ceny v intervaláči z rozsahu aby sme neprekročili h, ale ani menší ako d.
+A nájdeme maximum ceny. Popritom si pamätáme ktoré prvky to boli, z ktorých sme vedeli vyskladať takúto cenu.
+
+Čas takéhoto riešenia je O($2^{\frac{n}{2}}$.log(n))
+Pamäť je tiež exponenciálna O($2^{\frac{n}{2}}$.log(n)) pretože si musíme pamätať $2^{\frac{n}{2}}$ prípadov a ešte intervalač, tak preto ten logaritmus.
+
+Výsledok to vráti vždy dobrý, pretože fakt nájde vždy najväčšiu cenu.
+
+Nanešťastie som to nestihol nakódiť, takže mám tam len rekurziu za 3 body.
+
+Pseudo kód:
+
+rekurzívne vyrátaj všetky prípady od 1 po n/2 a nahádž ich do mapy kde v indexe bude váha - tj budeme tam mať len kombinácia z danou váhou a najväčšou cenou pre danú váhu.
+
+Potom toto všetko nahádž do intervaláča maximového, kde za maximum sa berie cena.
+
+rekurzívne vyhľadaj všetky kombinácie od n/2+1 až po n a pre každú kombináciu nájdi v intrevaláči maximum ceny tak, aby váha nebola ani príliš veľká ani malá.
+A ak je to väčšie ako doposiaľ najväčšia cena tak ju navýš a zapíš si kombinácie prvkov.
+
+A nakoniec vypíš tie prvky, ktoré nám zabezpečili najväčšiu cenu.
+
+ 
+\end{document}

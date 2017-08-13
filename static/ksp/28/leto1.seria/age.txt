@@ -1,0 +1,14 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.2 - Popis
+
+
+
+
+PO naèítaní vstupu si mapu musíme uloi do pamäte. Nemusíme ani rozmıš¾a nad záhybmi obvodu galeón - staèí ich umiestni do èo najmenšieho obdånika.
+ten obdånik nájdeme tak, e nájdeme, kde zaèína pevnina a kde konèí. Potom do po¾a vpíšeme tento obdånik a vypíšeme celú mapku.
+
+Pamäová zloitos : závisí od dåky a šírky mapky tj O(RS)
+Èasová zloitos : závidí tie len od ve¾kosti mapky tj O(RS)

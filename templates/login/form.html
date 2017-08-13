@@ -1,0 +1,15 @@
+{% extends 'page_template.html' %}
+
+{% block body %}
+    <h1>Login</h1>
+    <form method="post" action="{% url 'login' %}" class="form-horizontal">
+      <fieldset>
+          <div class="form-group col-xs-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Odošli" />
+              </div>
+      </fieldset>
+    </form>
+
+{% endblock %}

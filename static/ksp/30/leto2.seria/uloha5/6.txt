@@ -1,0 +1,2 @@
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+/(^(aa)*$)/{s/aa/a/g};t; /(^(aa)*.$)/{s/a/aaa/g; s/(.*)/\1a/}

@@ -1,0 +1,17 @@
+meno: Michal Korbela
+škola: gymnázium J.J Bánovce nad Bebravou
+trieda: kvinta
+Príklad è.2
+
+
+
+
+Princíp programu spoèíva v nájdení balíèkov ktoré nie sú na niakıch závislé.
+Po naèítaní vstupu si program vytvorí zoznam všetkıch balíèkov.
+Potom preèíta jednoitlivé závislosti balíèkov a ak je danı balíèek v zozname, tak ho vymae.
+Ak nejaké balíèky zostanú v zozname, program ich vypíše preto, lebo tieto balíèky nie sú na nijakıch baíèkoh závislé.
+
+Èasová zloitos O(pocet(a1+a2+a3...apocet+pocet)+pocet) kde pocet je poèet balíkov 
+a a1 a apocet je poèet balíkov na ktorıch je danı balíèet závislı
+
+Pamäová zloitos je O(1000°2+1000)

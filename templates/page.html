@@ -1,0 +1,8 @@
+{% extends 'page_template.html' %}
+
+{% block body %}
+    {% autoescape off %}
+        {% if request|get_login %}<h2 class="right"><a href="{% url 'page_edit' page.pagename %}"><span class="glyphicon glyphicon-pencil"></span></a></h2>{% endif %}
+    {{ page.content }}
+    {% endautoescape %}
+{% endblock %}

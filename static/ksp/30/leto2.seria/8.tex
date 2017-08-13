@@ -1,0 +1,68 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 4.séria 4.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+
+Ohýbať pásik o 180 vieme len tak, že ho budeme rolovať.
+O pásiku vieme, že ak pre každú poziciu d na pásiku vieme určiť koľkými spôsobmi sa dá ohnúť na ľavej aj pravej strane od tejto pozicie(tak aby v mieste pozície (bod nie úsek) bola len jedna vrstva pásika - pásik sa neohne tak, aby zakryl tento bod), tak potom vieme vypočítať jednoduchým násobením koľkými spôsobmi sa dá ohnúť celý pásik. Takto to vieme vypočítať pre každý bod. Takže zatiaľ je to v čase O($n^2$), takže nieje problém aby to zbehlo.
+
+Už len ako vypočítať vo vhodnom čase počty ohnutí pre každý bod naľavo aj napravo.
+
+No najskôr poďme rátať len naľavo. Vieme, že na ľavej strane je na začiatku pásik nalepený na a políčkach. Takže povedzme, že má dĺžku a zľava(počet nalepených políčok na vrchu na ľavom konci). Tento koniec vieme ohýbať vždy tak že dĺžka zľava bude vždy aspoň a. Môže mať aj a+1 dĺžku ak to dovoľuje pravá nalepená strana zhora - nalepených b políčok. Takže vieme, že pre každý bod h máme najviac h rôznych dĺžok a z týchto dĺžok vieme spraviť niekoľko veľa možností - čo nevedie k rýchlemu riešeniu. Preto pre každý dielik d pásika kde končia nejaké ohnutia dĺžky l, vieme, že tento pásik sa ohne tak, že končiť bude na d+l políčku. Ale ak je mu to dovolené, tak aj na políčku d+l+2 a dĺžky l+1, alebo d+l+4 a dĺžky l+2. Ale my si vieme povedať, že tento pásik, čo má byť ohnutý aby končil na d+l+2 a mal dĺžku l+1 bude začínať na políčku d+1 a bude mať dĺžku l+1 - je to to isté. A takto vieme ďalej posúvať dĺžku pásika až pokiaľ je mu to dovolené. takže pre každú pozíciu pásika a pre každú dĺžku l ktorá končí na tomto políčku koľkými spôsobmi vieme ohnúť pásik po túto pozíciu a to v čase O(n) - pre toto políčko. Samozrejme tie dĺžky ktoré sme pripočítali na nasledujúce políčko musíme aj odpočítať - tak pri počítať ich potom odpočítame.
+
+Riešenie je naozaj správne - pretože počty ohnutí pásika pre každú hranicu prenásobíme s každou inou ktorá leží vľavo a tým pádom určite dosiehneme správny výsledok. To že pre každú pozíciu na pásika vypočítame koľkými spôsobmi sa dá ohnúť tak, aby posledný zalepený pásik zľava bude na x tej pozícii zľava vieme vypočítať v kvadratickom čase pre všetky pozície x. Tak isto ako aj zľava tak aj sprava.
+
+Čas je kvadratický O($n^2$)
+a pamáť tak isto kvadratická - pretože pre každé políčko x si musíme pamätať počty najviac x možných ohnutí pásika, takže O($n^2$)
+
+
+
+
+
+
+Pseudo kód
+
+\begin{lstlisting}
+
+funkcia rataj moznosti(a - pocet policok zlava)
+pre kazde i policko od 2a po n begin// ziadny pasik nemoze koncit skor 
+- ma dlzku aspon a
+
+pre kazdu dlzku d od 1 po n begin
+pocet dlzky d na policku i bude rovnaky aj na i+d pozicii
+pocet d+1 na policku i+1 pozicii bude tiez rovnaky ako dlzok d na pozicii
+pripocitaj si pocet d+1 aby si ho mohol neskor odcitat
+end
+end
+
+pocet ohnuti konciacich na policku i bude sucet vsetkych poctov dlzok na policku i a minus pocty vsetkych pridani (dlzok +1)
+
+vrat vector poctov pre kazdu poziciu
+end.
+
+
+nacitaj vstup
+rataj(a)
+rataj(b) // ved je to to iste akurat nam to vrati len obratene
+
+pre kazdu poziciu i od a po b
+spocitaj pocty ohnuti pocet ohnuti napravo na policku i+1 * sucet ohnuti na vsetkych polickach od a po i	
+
+Samozrejme vsetko vzdy moduluj.	
+
+\end{lstlisting}
+
+\end{document}

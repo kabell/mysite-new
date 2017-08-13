@@ -1,0 +1,50 @@
+Najskôr zaèneme testova, èi sa dajú pouklada dominá.
+
+pri naèítavaní si budeme uklada iba tie, na ktorıch sú rozdielne èísla. Na tıch na ktorıch sú èísla rovnaké, si zaznaèíme, len ich poèet.
+V poli "pole" si ukladáme dominá a v poli "cisla" si ukladáme informácie o dominách
+v kadom stípci sú informácie o danom èísle - v prvom stípci sú informácie o 1 v druhom o 2...
+
+V prvom riadku je uloenı poèet danıch èísel na dominách - okrem tıch na ktorıch sú rovnaké èísla.
+V druhom riadku je uloenı poèet domín na ktorıch sú rovnaké èísla
+V treom riadku sú uloené zvyšky po delení 2 - èi je danıch èísel ( z prvého riadku párny, alebo nepárny)
+A 4. riadok obsahuje èísla, ku ktorım sa u vieme dosta.(získame ich v testovaní dostupnosti)
+
+
+na zaèiatku sa zaène testova, ko¾ko je èísel na dominách ktoré majú nepárny poèet. Ak sú práve 0 alebo 2 poèty èísel nepárne a ostatné párne, môme pokraèova, pretoe je nádej , e sa postupnos bude da pouklada. Ak bude 0 nepárnych èísel - rad nebude ma zaèiatok, a ani koniec - bude sa da pouklada vdy a hociako. Ak však bude nepárnych èísel 2 rad bude ma zaèiatok a koniec - nebude jedno ako ho zaèneme uklada. Ak bude poèet nepárnych èísel inı ako 0 alebo 2 - rad sa nebude da pouklada, pretoe bude ma inı ako 0 alebo 2 koncov, - nebude ho moné pouklada - neexistuje takı rad, ktorı by nemal 0 alebo 2 koncov - 2 konce  - rad - 0 koncov krunica  - dá sa hocikde rozdeli.
+Potom sa zaène testova, èi existuje aspoò jedno domino, na ktorom sú rôzne èísla. Ak nie, tak ak budú existova rôzne dominá z rovnakımi èíslami, nebude ich moné pouklada. Potom môu existova len dominá z rovnakymi a tımi istımi èíslami.
+Ak existuje aspoò jedno domino z rôznymi èíslami, potom sa zaène testova, èi sa dostaneme od kadého domina ku kadému a to tak, e si zoberieme ¾ubovo¾né domino ( my si zoberieme prvé) a zapíšeme si jeho èísla do riadku 4 v poli èísla. Potom budeme h¾ada také domino, ktoré bude obsahova také èísla, ktoré práve jedno z nich sa bude nachádza v našom zozname a druhé sa v zozname nachádza nebude. Toto zopakujeme 4 krát, pretoe môeme nájs max 4 èísla (2 u máme ( z prvého domina) a chıbajú nám u len 4 do 6).
+Potom sa zaène  testova, èi sme našli všetky èísla - èi sa vieme ku kadému dosta. Ak nie nemá vıznam ís ïa¾ej.
+Ak sa vieme dosta ku kadému z èísel ktoré je na karièkách z rôznymi èíslami, testujeme, èi neexistuje domino z rovnakımi èíslami, ale neexistuje také domino ktoré obsahuje jedno z tıchto èísel a nejaké iné - èi vieme zapoji domino z rovnakımi èíslami do rady.
+Ak neexistuje také domino ktoré by obsahovalo 2 rôzne èísla otestuje sa, èi existujú len dominá také, na ktorıch sú rovnaké èísla - 1 èíslo - èi neexsitujú dominá z rovnakımi èíslami, ale navzájom odlišné napr 3 a 3, 5 a 5(toto sa bude testova len vtedy keï neexistuje domino s rôznymi èíslami)
+
+Potom sa u koneène vypíše, èi sa dá rad pouklada, alebo nie
+
+Ak sa dá rad pouklada, existujú 2 monosti:
+1. ak rad nemá koniec - je jedno kde zaèneme
+2. Ak rad má zaèiatok a koniec
+
+Ak rad má zaèiatok a koniec:
+Nájde sa domino s èíslom ktorého je nepárny poèet, ale pred jeho vypísaním, sa vypíšu ešte dominá, ktoré majú rovnaké èísla a rovné tomu, èo má by na zaèiatku
+Keï sa u vypíše aj to domino ,ktoré má by na zaèiatku (a pred ním vypísané dominá s rovnakımi èíslami) musíme si urèi koniec - domino, ktoré má by na konci, aby nebolo vypísané skôr ako má by, pretoe by rad skonèil.
+To zariadime tak, e domino presunieme na koniec zoznamu - keïe v zozname (v poli "pole") h¾adáme od zaèiatku po koniec a vdy nájdeme h¾adané domino, tak k danému dominu sa dostaneme k ako poslednému.
+Potom vypíšeme zase dominá, ktoré majú rovnaké èísla také, ktoré je na druhej kartièke domina ktoré bolo vypísané.
+
+Potom u nasleduje cyklus ktorı vypíše ostatné dominá.
+Tento cyklus zbehne to¾ko krát, ko¾ko je 1 + 2 + 3 + 4 + 5 + 6 a keïe sa na raz vypíše jedno domino (jedno domino obsahuje 2 èísla) tak div 2 a -1, pretoe jedno domino u bolo vypísané.
+Keï sa u dané domino vypíše nahradí sa 0, - vymae sa - nebude moné ho vyh¾ada.
+Po vypísaní domina sa zmení èíslo, ktoré je na konci radu -  je zapísané v peremennej x - a vypíšu sa dominá s rovnakımi èíslami rovnakımi ako x. Poèet èísel sa samozrejme vynuluje - to by sa potom vypisovali dos ve¾a krát.
+
+Ak nemá rad zaèiatok a koniec:
+Musíme stanovi hodnotu x - inak by sa nedalo vyh¾ada iadne domino, tak ju stanovíme tak, e to bude najblišie domino èie pole[1][1]
+Potom zbehne cyklus vıpisu to¾ko krát ko¾ko je 1 + 2 + 3 + 4 + 5 + 6 div 2 - keïe sú na jednom domine dve èísla.
+A vypíšu sa rovnaké dominá.
+
+
+
+
+Pamäová zloitos:
+je úmerná poètu domín èie O(pocet) - pocet je poèet domín
+
+Èasová zloitos:
+Tá závisí tie len poètu domín èie O(pocet)
+ 

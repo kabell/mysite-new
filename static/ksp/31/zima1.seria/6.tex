@@ -1,0 +1,32 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[slovak]{babel}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+\usepackage{listings}
+
+
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 4.séria 4.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+
+Keď sa pozrieme na úlohu, vieme, že potrebujeme zratať knapsack problem.
+No a na to potrebujeme poznať všetky prvky batohu. Tie však nevieme. Vieme, však ako ich zistiť. Na začiatku nevieme veľkosť množiny A. To však vieme jednoducho zistiť a to prijatím množiny B. Takže už vieme veľkosť množiny A. Nevieme však aké prvky obsahuje. Tak čo spravíme. Budeme akceptovať len tie množiny B, ktoré sú menšie od množiny A. Množina B teda bude obsahovať o 1 prvok menej. Takto to opakujeme až množina A bude prázdna - tj. neobsahuje žiadne prvky. Takže teraz zas budeme brať len také množiny B, ktoré sú väčšie od A. Vždy ked prijímeme množinu B - tj množinu ktorá obsahuje o jeden prvok viac, tak tým pádom vieme aj veľkosť toho prvku, ktorý do množiny pribudol. Jeho veľkosť bude rozdiel veľkostí starej a novej množiny.
+Týmto spôsobom vieme zistiť veľkosť každého prvku ktorý vedúci majú. Takto ich budeme všetky poznať, no vieme, že sú určite všetky, pretože vieme ich počet. Teraz už vieme aj konkrétne hodnoty prvkov. Takže prestaňme narábať s množinami a vyrátajme si knapsack klasicky. To nám zaberie $2^{\frac{n}{2}}$.n času - použijeme meet in middle aby sme mali lepší čas(aj ked v kóde používam klasický bruteforce).
+Potom vieme, ktoré prvky potrebujeme. Preto si znova vyprázdnime množinu A. A postupne pridávajme prvky ktoré potrebujeme - ktoré sme knapsackom zrátali. Keď ich budeme mať všetky, tak končíme. Máme zaručené, že riešenie je určite správne, pretože prvky si vyrátame ručne, a to, že to stihneme do 1000 krokov by malo platiť tiež, pretože vyprázdnenie množiny na začiatku nám trvá max cca 70 krokov - ked je množina plná.Potom naplnenie nám trvá rovnako tiež cca 70 krokov. Vyprázdnenie znova max 70 krokov a nájdenie vyrátaných prvkov znova max cca 70 krokov. Dokopy je to cca 280 krokov. Ešte otázka prečo 70 krokov na jedno zmenenie množiny z prázdnej na plnú, alebo naopak. Vplýva to z pravdepodobností. 20/20+20/19+20/18+20/17...20/2+20/1=cca 70.
+
+Pamäťová zložitosť: bude lineárna od počtu prvkov tj O(n) a časová bude O($2^{\frac{n}{2}}$.n+$n^2$), pretože potrebujeme spraviť knapsack a počet acceptov a declinov nepresiahne $n^2$ - pretože pre každý zlomok platí, že n/i<=n a tým pádom máme n zlomkov, takže $n^2$ to nepresiahne.
+
+
+
+\end{document}

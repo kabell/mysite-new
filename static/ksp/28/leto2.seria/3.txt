@@ -1,0 +1,15 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.3 - Popis
+
+
+
+
+Tu si musíme uvedomi, e nás nejaújíma èas, za ko¾ko sa tam jednotky dostanú.
+Ak sa tam nejaké jednotky dostanú, tak to bude nejaká kombinácia jednotiek.
+To znamená, e nám staèí otestova, èi nájdeme takú kombináciu, ktorej súèet prvkov je väèší ako predchádzajúcej a to najviac o najväèší dennı prírastok. Ak však takúto kombináciu nenájdeme, tak sa bude h¾ada o 1 menšia, a to a dovtedy, kım nebude hodnota súètu kombinácie rovná poètu obsadenıch vojakov.
+
+Èasová zloitos škoda , ale O(N^5) pretoe kombinácie nám zaberú ve¾a èasu(sú tam vnorené 4 cykly, preto n^4) a testujeme ich n krát - n^5
+Pamäová zloitos - musíme si zapamäta všetky jednotky - O(n)

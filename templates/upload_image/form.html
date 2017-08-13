@@ -1,0 +1,38 @@
+{% include 'common/header.html' %}
+
+<form action="{% url 'image_upload' %}" method="post" enctype="multipart/form-data">
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Upload" />
+
+</form>
+{% if filename %}
+    <a href="{{ filename }}">{{ self.rootURL }}{{ filename }}.jpg</a>
+
+<textarea cols="29" rows="7">
+
+    &ltdiv class="fotka"&gt;&lta href="{{ filename }}.jpg"&gt; &ltimg src="{{ filename }}.jpg" /&gt;&lt/a&gt;
+&ltdiv>{{ popisok }}&lt/div&gt;
+&lt/div&gt;
+</textarea>
+{% endif %}
+<img id="blah" style="max-width:300px; max-height: 300px;" src="#" alt="your image" />
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
+
+{% include 'common/footer.html' %}
+

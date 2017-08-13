@@ -1,0 +1,2 @@
+a
+s/(a*)b/\1x/; /^a*$/{ s/./b/g; s/(.*)/\1a/; b end;}; :begin; s/(b*)a(.*x)/\1b\2/; t begin; s/x/a/; :end;

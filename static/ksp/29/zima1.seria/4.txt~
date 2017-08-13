@@ -1,0 +1,66 @@
+najskôr si musíme uvedomiť, ako dosiahneme najmenší počet balíkov, tak aby v každom boli rôzne čísla. Zoberme si čísla, ktorých je najviac. Toľko vytvoríme balíkov, lebo keby ich bolo menej, tak podľa Dirichleta v aspoň jednom musia byť dve rovnaké. Vieme, že už čísel, ktorých je väčší počet ako týchto nieje, keďže sme vybrali ten najväčší, tak tento počet bude určovať počet balíkov. Keby sme ich vytvorili viac, tak je nám to len na škodu. A ako optimalizovať balíky, aby bolo v každom čo najmenej?? tak určite môžme rozdeliť čísla, že si pripravíme balíky a začneme do nich ukladať postupne rovnaké čísla. Najskôr do prvého dáme 1, potom do druhého dáme tiež jedno, atd. a tiež do posledného dáme 1. Takto budeme mať v každom balíku po jedno číslo. Vždy keď nám dojdu rovnaké, tak začneme ukladať ďaľšie, iné, ale zase rovnaké, a keď nám aj tie dojdu, tak zase rovnaké. Takto poukladáme všetky čísla
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+
+
+
+
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
+
+
+
+
+int main(){
+long long n;
+cin>>n;
+
+long long * pole=new long long[n+1];
+for(long i=0;i<n;i++)
+cin>>pole[i];
+
+
+
+ qsort (pole, n, sizeof(long long), compare);
+
+long long pos=0,naj=0;
+long long pocet=1;
+while(pos<n){
+             if(pole[pos]==pole[pos+1])pocet++;
+             else{
+                  if(pocet>naj)naj=pocet;
+                  pocet=1;
+                  }
+                  pos++;
+
+    }
+    
+    int zvys=0;
+    if (n%naj!=0) zvys=1;
+
+                  
+                   cout<<naj<<"\n"<<(n/naj)+ zvys<<endl;
+                  
+                  
+                  
+             
+
+
+                 cin.get();
+                 cin.get();
+                 return 0;
+                 } 

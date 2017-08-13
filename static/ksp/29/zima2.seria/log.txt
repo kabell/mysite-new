@@ -1,0 +1,34 @@
+Vstupni soubor l1 otevren pro cteni.
+Vystupni soubor l2 otevren pro zapis.
+Zahajena komprese (RLE).
+Byte 10 ma frekvenci 127
+Byte 97 ma frekvenci 338
+Byte 98 ma frekvenci 138
+Byte 99 ma frekvenci 23
+Byte 100 ma frekvenci 33
+Byte 101 ma frekvenci 35
+Byte 102 ma frekvenci 11
+Byte 103 ma frekvenci 12
+Byte 104 ma frekvenci 14
+Byte 105 ma frekvenci 57
+Byte 106 ma frekvenci 8
+Byte 107 ma frekvenci 51
+Byte 108 ma frekvenci 31
+Byte 109 ma frekvenci 5
+Byte 110 ma frekvenci 35
+Byte 111 ma frekvenci 42
+Byte 112 ma frekvenci 1
+Byte 114 ma frekvenci 11
+Byte 115 ma frekvenci 30
+Byte 116 ma frekvenci 5
+Byte 117 ma frekvenci 17
+Byte 118 ma frekvenci 20
+Byte 119 ma frekvenci 4
+Byte 120 ma frekvenci 2
+Byte 121 ma frekvenci 9
+Byte 122 ma frekvenci 11
+Escape character = 0
+Ukoncena komprese (RLE).
+Kompresni pomer = 1.00
+Vstupni soubor uzavren.
+Vystupni soubor uzavren.

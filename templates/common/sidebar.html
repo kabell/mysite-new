@@ -1,0 +1,18 @@
+<div class='sidebar'>
+    <ul id='nav'>
+        {% for page in request|get_sidebar_menu %}
+        <li><a href="{% if page.custom %}{{ page.page }}{% else %}{% url 'page' page.page %}{% endif %}">{{ page.label }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="sidebar_blog">
+    <div>
+    <h5><b>Najnovšie príspevky</br> na blogu:</b></h5>
+    </div>
+    {% for post in request|get_sidebar_blog %}
+        <div>
+        <hr>
+    <span>{{ post.created }}</span><br/> <a class='sidebar_blog_a' href="{% url 'blog_show' post.id %}"><b> {{ post.title }}</b></a><br/>
+    </div>
+    {% endfor %}
+    </div>
+</div>

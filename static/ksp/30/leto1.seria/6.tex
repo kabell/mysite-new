@@ -1,0 +1,70 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 3.séria 4.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+
+Keď sa pozrieme na všetky  prejdene polička, tak budeme vidieť, že po niektorých prejdeme párny a po niektorých nepárny. Nepárny počet prechodov bude vtedy ak BUNV začíname tak, že most je od nás na pravej strane a keď prejdeme po všetkých mostoch tak budeme vidieť most na ľavej strane. Nazvime toto ako prechod cez most. Ak sme po moste prešli párny počet krát, tak to znamená, že sme sa na tom moste otočili, alebo sme sa otočili na nejakom, ktorý sa nachádza za ním. Keď sa nad tým zamyslíme tak ak vo vzorovom prechádzaní cez mosty prejdem prejdem po moste i nepárny počet krát, tak to znamená, že mosty po ktorých prejdem párny počet krát sa budú nachádzať buď naľovao odomňa, alebo napravo odomňa. Ak budem mať 2 mosty po ktorých prejdem nepárny počet krát, tak to bude znamenať, že medzi nimi sa nemôže nachádzať žiaden most po ktorom by som prešiel párny počet krát. Takže stačí nájsť len takú postupnosť mostov po ktorých prejdem párny počet krát(možno aj 0), za ním tesne počet mostov po ktorých prejdem nepárny počet krát(možno aj 0) a za nimi hned bude nasledovať postupnosť mostov po ktorých prejdem párny počet krát(možno aj 0).
+
+Keď sa pozriem na mosty tak je asi vidieť, že po mostoch s číslom 1 sa asi ťažko môžem otočiť - sú jednosmerné. Preto buď tieto mosty ležia v časti nepárnom počet krát prejdení, alebo v žiadnej. Nech zomrú!!. Takže nájdem maximum (ako viem prejsť otočenie a potom nepárny počet krát niekoľko políčok)pre každú pozíciu mosta od 1 až po n. Potom si toto isté maximum vyrátam aj od n po 1. Potom už len čo spravím prejdem všetky pozície mostov a nájdem maximum súčtov maxím od 1 po i a od i+1 po n.
+
+Ako však rátam maximá?? No nech idem od 1 po n. Tak vždy si pamätám súčet políčok od 1 po i. To je nato, že keď narazím na 1, tak políčka po ktorých prejdem párny počet krát už nemôžu pokračovať ďalej, pretože cez toto políčko  môžem prejsť len jeden krát. Preto tu musím ak sa mi to oplatí začať spočítavať súčet od 0 , pretože tým pádom cez toto políčko nemôžem prejsť párny počet krát tj bud budem pokračovať len nepárnym počom krát, alebo začnem od tohto políčka(niekedy sa vážne oplatí spraviť aj toto. Škoda tých políčok pred nami. Nech zomrú !!). Pre každú pozíciu i si pamätám súčet od začiatku - pre prípad, že by som musel znova začať v prípade, že by som nabehol na 1. Potom si pamätám súčet nepárnych a súčet párnych. Hned vysvetlím. Súčet párnych je súčet všetkých párnych častí čísel od prvého mosta(alebo od čísla 1) až po pozíciu i. Súčet nepárnych je súčet nepárnych častí od pozície najväčšieho súčtu + to maximum. Prečo práve tak ?? od maxima ?? pretože to maximum je určite max z čísel súčet nepárnych a súčet párnych. Potom súčet nepárnych rátame preto s týmto číslom, pretože to maximum mohol byť súčet párnych a potom sme pokračovali len sčítaním nepárnych častí čísel. U súčtu párnych to nemohlo byť tak, pretože pretože akonáhlne zoberieme nepárny počet z nejakého čísla, tak už nemôžeme pokračovať v braní párnych častí čísel. (To otočenie z druhej strany sa bude nachádzať až v súčtoch ktoré budeme rátať od konca po začiatok.) Takže maximum pre políčko i vypočítame ako maximum z párnych a maximum nepárnych.
+
+Takto podobne si vyrátame maximá pre od n po 1.
+Toto všetko vieme spraviť v lieárnom čase, pretože pre každú pozíciu i keď rátame maximá od 1 po n tak potrebujeme konštantný počet krokov. Konštantný počet krokov potrebujeme aj pre každú pozíciu pri prechode od n po 1. Takže celková časová zložitosť je O(N). Pamäť: Pre každé políčko (most) i je potrebné pamätať si maximum (aj od začiatku aj od konca - teda konštantný počet vecí), takže pamäťová zložitosť bude O(N).
+
+Maximálny počet prechodov po mostoch teda dostaneme ako maximum zo súčtov dvojíc súčtu maxím od začiatku po i a súčet maxím od konca po i+1. Takže to vieme vypočítať v lineárnom čase od N teda O(N). Takže celková časová zložitosť bude O(N). Pamäť - pamätáme si len maximá a jednotlivé mosty, takže O(N).
+
+Moje riešenie dá vždy správny výsledok pretože zoberie najväčší počet prechodov od tejto pozície i smerom k 1.mostu (niekedy sa môže otočiť aj inde ak je to výhodnejšie) a späť až pokiaľ sa dá(vieme brať párne časti čísel - je to výhodnejšie). Potom k tomu pripočítame najväčší počet prechodov od tejto pozície(i+1) smerom k n-1 mostu a späť(otočiť sa môže ľubovoľne kde ak je to výhodnejšie). Takže určite dá správny výsledok.
+
+\textbf {Pseudokód:}
+
+načítaj vstup\\
+for i:=1 to n-1\\
+{\\
+vyrátaj súčet nepárnych\\
+vyrataj súčet od začiatku\\
+ak si nestupil na 1 vyrátaj súčet párnych\\
+inak ho označ 0\\
+
+vyrátaj si maximum pre toto políčko max(parny,nepárny) a zapamätaj si ho. Ak je táto hodnota väčšia\\
+ ako doteraz poznaná, tak nepárny =tento súčet\\
+}\\
+\\
+
+for i:=n-1 to 1 do\\
+{\\
+to iste ako predtým\\
+}\\
+for i:=1 to n-1 do \\
+
+if(max od zaciatku[i]+max od konca$>$ maximum) maximum =ich sucet\\
+\\
+
+vypis maximum\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

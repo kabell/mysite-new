@@ -1,0 +1,42 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 4.séria 4.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+
+No žiadne iné riešenie ako vyskúšať každú bunku, či je bezbečná nepoznám, tak idem popísať toto. Pre daný sektor sa pozriem na susedné 2 sektory a pre každú bunku  si vypočítam koľko je na jednej aj druhej strane premostení. Ak je ich rovnako bumku prehlásim za stabilnú a idem na ďalšiu.
+Počet premostení viem zistiť aj binárnym vyhľadávaním, ale načo by sme si komplikovali život, keď to vieme spraviť, že na obe strany sektora si umiestnim pointre a tie vždy iba iterujem. Toto nám čas a ani pamäť nezhorší, tak prečo nie.
+
+Riešenie je určite správne, pretože pre každú buku zistím, či je stabilná alebo nie. Takže nieje dôvod mať zlú odpoved.
+
+čas je lineárny od počtu premostení - pretože každé premostenie skontrolujem konštantný počet krát, takže O(k) - k je počet premostení.
+Pamäť - tieto premostenia si musíme pamätať, takže O(k), teoreticky všetky si nemusíme pamätať, ale určite si musíme pamätať postupne premostenia každého sektora - inak by sme nevedeli určiť počet stabilných buniek v nasledujúcom sektore a tým pádom si určite raz budeme musieť pamätať aspoň 3*k/n premostení, ale v najhoršom prípade to bude až k premostení, takže nám to pamäť nijako neušetrilo. Stále bude lineárna od k.
+
+ 
+Pseudokód:
+
+
+
+
+
+
+
+
+Pre každý sektor i od 0 po n-1 sa pozri sa sektory (n-1+n)\%n a (n+1)\%n
+	pre každé premostenie posuň pointre na oboch stranach tak aby neboli väčšie ako je premostenie a ak je počet iteracii na oboch stranách rovnaký tak prehlás bunku za stabilnú - ak nieje tak za nestabilnú.		
+
+
+
+\end{document}

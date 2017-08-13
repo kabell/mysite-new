@@ -1,0 +1,15 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.4 - Popis
+
+
+
+Ak celú oblas piramídy prekríva oblas inej piramídy. môme ju zmaza.
+
+Na tom funguje aj náš program - naèíta pyramídy(musí, pretoe u s naèítanımi sa nedá niè robi, pretoe nevieme, èi niekde nebude nejaká, èo nám úplne všetlo zmení)
+Keï sa vstup naèíta, tak budeme kadú testova kadou a ak nájdeme také dve, èo sa ich oblasti prekrívajú, tak tú menšiu vymaeme. Niè tım nestratíme, pretoe ak platí, e nejaká pyramída a prekrıva celú oblas pyamídy b, a tá prekrıva celú oblas pyramídy c. tak aj a prekrıva c.
+Preto keï nejakú zmaeme, tak sa niè nestane.POtom sa piramída vypíše - teda jej poradové èíslo.
+
+Ešte jedna vec : boid, kde je umiestnená pyramída si vôbec nemusíme pamäta, lebo ho nikde nevyuijeme.

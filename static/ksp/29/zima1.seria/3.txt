@@ -1,0 +1,78 @@
+﻿Meno: Michal Korbela
+trieda: sexta
+škola: Gymnázium J.J. Bánovce
+úloha č.3
+
+Keď sa lepšie pozrieme, tak nám určite stačia 2 balíky špagiet. Prvý bude mať čas varenia medzi najmenším nedovareným a najmenším rozvareným. 2. bude mať čas medzi posledným nedovareným a posledným rozvareným. Ak bude interval prvého a druhého balíka rovnaký, tak nám stačí jeden balík. Ak však aspoň z jedného balika nebude existovať, tak vypíšeme -1.
+
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+using namespace std;							
+
+
+
+
+int main(){
+    long n,r;
+    cin>>n>>r;
+ long pole1[100020];
+ long pole2[100020];
+
+    for(long i=0; i<n;i++)
+    scanf("%d",&pole1[i]);
+
+    for(long i=0; i<r;i++)
+    scanf("%d",&pole2[i]);						//načítanie premenných
+    
+
+   long nz=1000000;							//vyhľadanie najmenších a najväčších čísel v poliach
+   long rz=1000000;
+   long nk=0;
+   long rk=0;
+   for(long i=0; i<n; i++){
+            if(pole1[i]<nz) nz=pole1[i];
+            }
+      for(long i=0; i<r; i++){
+            if(pole2[i]<rz) rz=pole2[i];
+            }
+         for(long i=0; i<n; i++){
+            if(pole1[i]>nk) nk=pole1[i];
+            }
+            for(long i=0; i<r; i++){
+            if(pole2[i]>rk) rk=pole2[i];
+            }
+    
+    if(nz<rz && nk<rk){							//zistíme, či existuje interval
+
+
+    
+   if(nk>rz ) printf("2\n"); 						//ak existujú 2, tak vypíšeme 2
+   
+
+   
+   else printf("1\n"); 							//ak existuje len 1, tak vypíšeme 1
+   
+
+   
+   
+   
+   
+   
+   
+                                       }
+                                       else  printf("-1\n"); 		//ak interval neexituje, tak vypíšeme -1
+                                       
+
+
+
+                                       
+                                       
+                                       }
+
+
+čo sa týka časovej a pamäťovej zložitosti, tak pamäťová je lineárna O(n+r), lebo si zapamätáme, len to čo je na vstupe, a časavá je tiež lineárna, pretože nájdenie najmenšieho a najväčšieho čísla nám trvá lineárny čas - O(n+r).

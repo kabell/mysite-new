@@ -1,0 +1,143 @@
+#include<iostream>
+
+using namespace std;
+
+struct str{
+bool znak;
+bool zac;
+bool kon;
+bool dolezac;
+bool dolekon;
+bool horezac;
+bool horekon;
+
+
+};
+
+int r,s,n;
+
+
+str pole[2047][2047];
+
+int convert(int t, int m)
+{
+if(t<1) return 1;
+if(t>=1 && t<=m) return t;
+else return m;
+}
+
+
+void znac(int x,int y)
+{
+
+if(x-n>0 && y-n>0){pole[x-n][y-n].dolezac=true;}
+else if(x+n<=r && y-n>0){pole[x+n][y-n].horezac=true;}
+else if(x+n<=r && y+n<=s)pole[x+n][y+n].horekon=true;
+else if(x-n>0 && y+n<=s)pole[x-n][y+n].dolekon=true;
+}
+
+void smerDole(){
+//smer dole zac
+for(int i=1; i<=s; i++){
+int dole=0;
+for(int j=1; j<=r; j++){
+
+if(pole[j][i].dolezac==true)
+dole=j+2*n+1;
+if(dole>j) pole[j][i].zac=true;
+}
+}
+//smer dole kon
+for(int i=s; i>0; i--){
+int dole=r+1;
+for(int j=1; j<=r; j++){
+
+if(pole[j][i].dolekon==true)
+dole=j-2*n-1;
+if(dole<j) pole[j][i].kon=true;
+}
+}
+
+//smer hore zac
+for(int i=1; i<=s; i++){
+int dole=0;
+for(int j=r; j>0; j--){
+
+if(pole[j][i].horezac==true)
+dole=j+2*n+1;
+if(dole>j) pole[j][i].zac=true;
+}
+}
+
+//smer hore kon
+for(int i=s; i>0; i--){
+int dole=r+1;
+for(int j=r; j>0; j--){
+
+if(pole[j][i].horekon==true)
+dole=j-2*n-1;
+if(dole<j) pole[j][i].kon=true;
+}
+}
+
+
+}
+
+
+
+void smerVpravo(){
+for(int i=1; i<=r; i++){
+int dole=0;
+for(int j=1; j<=s; j++)
+{
+if(pole[i][j].zac==true)
+dole=j+2*n+1;
+if(dole>j)pole[i][j].znak=true;
+}
+}
+
+for(int i=1; i<=r; i++){
+int dole=s+1;
+for(int j=s; j>0; j--)
+{
+if(pole[i][j].kon==true)
+dole=j-2*n-1;
+if(dole<j)pole[i][j].znak=true;
+}
+}
+
+
+}
+
+
+int main(){
+
+cin>>r>>s>>n;
+
+for(int i=1; i<=r; i++)
+for(int j=1; j<=s; j++){
+char t;
+cin>>t;
+if(t=='#')
+znac(i,j);
+
+
+}
+
+
+
+smerDole();
+smerVpravo();
+
+for(int i=1; i<=r; i++){
+for(int j=1; j<=s; j++)
+
+if (pole[i][j].znak==1) cout<<"#"; else cout<<".";
+cout<<endl;
+}
+
+
+
+
+
+}

@@ -1,0 +1,40 @@
+﻿Meno: Michal Korbela
+trieda: sexta
+škola: Gymnázium J.J. Bánovce
+úloha č.1
+
+
+
+
+Vieme, že čísla nemôžme skôr vypísať, ako nebudeme mať zistený aritmetický priemer. Takže najskôr si ho musíme zistiť. To sa dá urobiť v lineárnej časovej a v konštantnej pamäťovej zložitosti. Ale problém je v tom, že ako potom čísla vypíšeme. Takže pri načítavaní sa nám pamäťová zložitosť rozšíri na lineárnu, a časová nám zostane lineárna. A keďže už máme zistený aritmetický priemer, tak už uložené čísla vypíšeme - tie ktoré sú väčšie.
+
+
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+
+
+int main(){
+    long n;
+    long long sum=0;
+    cin>>n;							načítame počet
+    long * pole= new long[n];					vytvoríme potrebne veľké pole				
+    for(long i=1;i<=n;i++){					
+    cin>>pole[i];						načítame do poľa
+    sum+=pole[i];						pripočítame hodnotu čísla - potrebné na zistenie aritmetického priemeru
+}
+long priemer=sum/n;						vypočítame priemer
+long pocet=0;
+for(long i=1; i<=n;i++)
+if(pole[i]>priemer) pocet++;
+cout<<pocet<<endl;						vypíšeme väčšie čísla ako priemer
+
+}
+
+
+takže časová zložitosť je o(N) a pamäťová tiež O(N), kde n je počet prvkov - čísel na vstupe

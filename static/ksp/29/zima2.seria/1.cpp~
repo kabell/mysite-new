@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+#include <vector>
+
+
+
+
+int main(){
+std::vector< std::vector<int> >V;
+V.resize(6);
+int n=0;
+std::cin>>n;
+int pocet=0,i1=0;
+l1:
+
+V[i1].push_back (0);
+if(i1<6){i1++; goto l1;}
+
+
+for(int i=0; i<n; i++){
+int a,b;
+
+
+std::cin >>a>>b;
+while(V[a-1].back()>b){
+pocet++;
+V[a-1].pop_back();
+}
+
+if(V[a-1].back()<b){
+pocet++;
+V[a-1].push_back(b);
+}
+
+
+}
+
+
+std::cout<<pocet<<std::endl;
+}

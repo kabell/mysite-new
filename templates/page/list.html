@@ -1,0 +1,16 @@
+{% extends 'page_template.html' %}
+
+{% block body %}
+    <h1>Stránky</h1>
+    <a href="{% url 'page_new' %}" class="btn btn-primary" role="button">Add page</a><br/><br/>
+    <p><b>Zoznam stránok</b>
+
+    <table class="table">
+{% for page in pages %}
+    <tr><td><a class='btn' href="{% url 'page' page.pagename %}">{{ page.title }}</a></td>
+    <td><a class='btn' href="{% url 'page' page.pagename %}edit/">Edit</a></td>
+    <td><a class='btn' href="{% url 'page' page.pagename %}delete/">Delete</a></td></tr>
+{% endfor %}
+    </table>
+
+{% endblock %}

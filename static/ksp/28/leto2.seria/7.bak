@@ -1,0 +1,36 @@
+program uradnici;
+
+var
+
+zoznam: array[1..100000,1..100000] of longint;
+cesta: array[1..100000,1..100000] of longint;
+fronta: array[1..100000] of longint;
+
+i,i1,i2,i3,a,b,c,n: longint;
+
+begin
+
+readln(n);
+
+for i:=1 to n-1 do begin
+readln(a,b);
+if a<b then begin
+inc(zoznam[a,1]);
+zoznam[a,zoznam[a,1]]:=b;
+end
+
+else begin
+inc(zoznam[b,1]);
+zoznam[b,zoznam[b,1]]:=a;
+end;
+end;
+
+for i:=1 to 10 do begin
+for i1:=1 to 10 do
+write(zoznam[i,i1]);
+writeln;
+end;
+end.
+
+
+

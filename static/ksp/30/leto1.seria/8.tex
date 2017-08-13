@@ -1,0 +1,75 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 3.séria 8.úloha}
+\author{Michal Korbela}
+
+
+
+\begin{document}
+
+Tak jedno z riešení, ktoré určite funguje je použiť BFS. Tým zaručene nájdeme najmenej krokov. Robili by sme to asi tak, že by sme išli z menšieho čísla po väčšie a vždy keď narazíme na také číslo i, ktoré je deliteľné číslom x z intervalu 2 až k tak vieme sa na toto políčko dostať z políčiek i+1, i+2... i+x-1. Takže takto vieme nájsť určite zaručene cestu na najmenej krokov.
+
+Toto riešenie má však časovú zložitosť O($ k $*$ (a-b) $), čo nemáme šancu stihnúť.
+
+Preto sa pozrime na špecialitu ktorú tento problém obsahuje. Pozrime sa na číslo ktoré je medzi $a$ a $b$ a je najmenším spoločným násobkom čísel 2 až $ k $(ak také exituje). Označme si toto číslo p. potom si ešte označme najmenší spoločný násobok 2..k ako \textbf{s}. Zoberme si jedno z čísel $ p $ až $ p+k-1 $ a označme ho $a$. Nech si zoberieme ľubovoľné x tak keď odčítame od $a$, $a$ mod $x$ určite výsledok nebude menší ako $p$, pretože p je deliteľné všetkými číslami x, takže určite nemôžme prekročiť túto granicu. Určite ju však skôr či neskôr dosiahneme. Pretože vždy sa posunieme aspoň o 1, ale ak by sme jedným skokom chceli preskočiť túto hranicu p, tak určite x nemôže byť z intervalu 2..k. Takže vždy dosiahneme hranicu p.
+
+Potom zoberme si 2 najbližšie čísla ktoré sú deliteľné $ s $. Označme tieto čísla $ x $ a $ y $. Na koľko krokov sa vieme dostať z $ y $ do $ x $ ??
+Vieme to spraviť v čase O($ s $) a označme tento počet $ w $. Zoberme si iné $ y $ a $ x $. Na presun medzi týmito 2 číslami nám znova treba $ w $ krokov, pretože keď si všetky čísla nahradíme ich zvyškami po delení $ s $,tak sa tým nič nezmení, pretože náz vždy zaujímajú len zvyšky po delení jednotlivých čísel 2..$ k $ a tieto sa periodicky opakujú v perióde $ s $. Takže stačí nám vypočítať si počet krokov medzi 0..$ s $  vrátane. Potom si vypočítať počet krokov od $ a $ po $ s $ a počet krokov od $ b $ po s. potom výsledný počet krokov bude počet periód $ s $ ktoré sa medzi $ a $ a $ b $ krát počet krokov periódy tj $ w $ + počet krokov od $ a $ po násobok $ s $ + počet krokov od $ b $ po násobok $ s $. (od $ b $ ideme smerom nahor a od $ a $ smerom nadol)
+
+Najmenší spoločný násobok vieme vypočítať v k*log s alebo tak nejak tu je niečo k tomu napísané:
+http://www.ksp.sk/wiki/uploads/Zadania/vzor243.pdf
+hned v prvej úlohe.
+\\
+
+Takže výsledný čas je O($ s $+k*logs). Pamäť - musíme si BFS prejsť celú periódu s, takže pamäť je O($ s $).
+
+\subsection*{Pseudokod:}
+\begin{lstlisting}
+funkcia kroky(a,b){
+pole krokov
+pole[a]=0;
+for i:=a to b do
+	if(pole[i+1]>pole[i]) pole[i+1]=pole[i]+1 //sem sa vieme dostat
+	 aj na pole[i]+1 krokov
+	
+	for x:=2 to k			//prejdeme vsetky x cisla od 2 po k
+		if(i mod x==0)		// ak je cislo delitelne x
+		for l:=1 to x-1 do
+		if(pole[i+l]>pole[i]) pole[i+l]=pole[i]+1	//na tieto
+			 vsetky cisla sa vieme dostat, takze ak sa na ne vieme
+			  dostat na menej pokusov tak na ne ideme
+
+return pole[b];
+}
+
+\end{lstlisting}
+funkcia gcd(x,y)  - vrati euklidovskou metodou vypocitany najvacsi spolocny delitel
+\\
+
+funkcia najmensi spoločny násobok - lcm (k) -vráti najmenší spoločný násobok čísel 2..k
+vieme, že lcm(a,b,c)=lcm(lcm(a,b),c)\\
+
+a vieme, že a*b=lcm(a,b)*gcd(a,b), takže nieje ho ťažke vypočítat
+
+
+samotný program
+\\
+
+vypočítaj lcm pre k\\
+vypočítaj počet krokov od 0 po lcm\\
+vypočítaj počet krokov od b po lcm\\
+vypočítaj počet krokov od lcm po b\\
+ak a-b <= lcm vypocitaj pocet krokov od b po a\\
+vypíš potom počet krokov tj počet celých period medzi a a b + počet krokov od b po lcm + počet krokov od lcm po a.
+ak je b-a menšie ako lcm tak vypíš radšej to vypočítané
+
+\end{document}

@@ -1,0 +1,33 @@
+#include<iostream>
+
+#include "BigIntegerLibrary.hh"
+
+using namespace std;
+
+int main(){
+char mode;
+cout<<"Press 'C' code or other to decode"<<endl;
+cin>>mode;
+if(mode=='C'){
+string s;
+BigInteger cislo=0;
+cin>>s;
+for(int i=s.length()-1; i>=0; i--)
+cislo=cislo*150+(int)s[i];
+}
+
+cout<<cislo<<endl;
+}
+else{
+BigInteger cislo;
+string s;
+cin>>s;
+cislo=stringToBigUnsigned(s);
+
+while(cislo>0){
+cout<<(char)(cislo%150).toUnsignedLong();
+cislo/=150;
+}
+cout<<endl;
+}
+}

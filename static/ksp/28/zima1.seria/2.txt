@@ -1,0 +1,3 @@
+Program pracuje na pricípe takom , e premiestni poèet znakov ktorı bol na zaèiatku zadanı na koniec
+
+Obmedzenia by mali by splnené pretoe sa tam nepouíva iadna iná premenná okrem n (náhrdelník) a K - poèet znakov

@@ -1,0 +1,24 @@
+day 02.02.2009
+transfer all EUR RUB
+day 16.02.2009
+transfer all RUB PLN
+day 16.03.2009
+transfer all PLN AUD
+day 13.04.2009
+transfer all AUD SEK
+day 04.05.2009
+transfer all SEK AUD
+day 15.06.2009
+transfer all AUD SEK
+day 17.08.2009
+transfer all SEK AUD
+day 13.12.2009
+transfer all AUD RUB
+day 30.05.2010
+transfer all RUB AUD
+day 21.06.2010
+transfer all AUD CZK
+day 05.11.2010
+transfer all CZK RUB
+day 31.12.2010
+transfer all RUB EUR

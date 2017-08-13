@@ -1,0 +1,17 @@
+{% extends 'page_template.html' %}
+
+{% block body %}
+          {% if form.label.value %}<h1>Úprava položky {{ form.label.value }}</h1>
+          {% else %}<h1>Vytvorenie novej položky v menu</h1>{% endif %}
+
+    <form method="post" action="{% url 'menuitem_edit' form.id.value %}" class="form-horizontal">
+      <fieldset>
+          <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Odošli" />
+              </div>
+      </fieldset>
+    </form>
+
+{% endblock %}

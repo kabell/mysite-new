@@ -1,0 +1,24 @@
+{% extends 'page_template.html' %}
+{% load static %}
+{% block body %}
+<script src="{%  static 'ckeditor/ckeditor.js' %}"></script>
+
+    <form method="post" action="{% url 'blog_edit' form.id.value %}" class="form-horizontal">
+        {% csrf_token %}
+        {% autoescape off %}
+        <fieldset>
+            <div class="form-group">
+        {{ form.as_p }}
+        {% endautoescape %}
+        <a style="float: right;" href="#" class="btn btn-primary"   onclick="window.open('{% url 'image_upload' %}', 'unicorn', 'width=300, height=600, screenX=100, screenY=100');return false;">Pridaj Obrázok</a>
+        <p>
+        <label>Tagy:</label>
+        {% for tag in tags %}
+            <label>{{ tag.name }}</label><input type="checkbox" name="tag{{ tag.id }}" {% if tag.on %}checked{% endif %}>
+        {% endfor  %}
+        <p/>
+        <input class="btn btn-primary" type="submit" value="Odošli" />
+        </div>
+      </fieldset>
+    </form>
+{% endblock %}

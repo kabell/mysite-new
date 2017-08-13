@@ -1,0 +1,6 @@
+day 02.02.2009
+transfer all EUR AUD
+day 30.11.2009
+transfer all AUD USD
+day 07.06.2010
+transfer all USD EUR

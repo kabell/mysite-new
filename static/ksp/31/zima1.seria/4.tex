@@ -1,0 +1,44 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[slovak]{babel}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+\usepackage{listings}
+
+
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 4.séria 4.úloha}
+\author{Michal Korbela}
+
+
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+\begin{document}
+
+Túto úlohu vieme spraviť nasledovne. Prejdeme celú postupnosť čísel a zožerieme tie, ktoré zožraté majú byť. Toto riešenie má čas O($n^2$). My však chceme lepšie riešenie. Najlepšie O(n), pretože rýchlejšie to už nebude - musíme načítať vstup.
+V tejto úlohe používam štruktúru forwardlist. Tá čo je v STL sami nejako nepáčila, tak som si nakódil vlastnú pomocou vectoru.\\
+Moje riešenie spočíva v tom, že si pamätám prvky ktoré majú pred sebou nejaký menší prvok, tj môžu niekoho zožrať. Tieto prvky si pamätám napr. vo unordered sete. ten má amorzitovane konštantnú zložitosť, trakže čas riešenia mi to nepokazí. Mohol som použiť aj nejakú inú štruktúru, napr. ďalší forwardlist, ale použitie tohoto mi prišlo nejdduchšie na nakodenie.
+V každom kole prejdem všetky aktívne prvky, pretože ostatné nemá význam prechádzať, pretože by aj tak nikoho nezožrali. Pre každý prvok, ktorý je aktívny, teda prevediem proces žratia. Keď nejaký prvok zožeriem, tak ho vymažem zo zoznamu prvkov - forwardlist a vymažem ho aj z aktívnych prvkov - už nemôže byť aktívny, keď je zožratý. Postupujem smerom od konca, aby som nežral prvky, ktoré ešte môžu niekoho zožrať v tomto kole. ked postupujem od konca, tak žeriem len prvky, ktoré už svoj proces žratia vykonali a tým pádom už od nich nemôžem nič očakávať. Potom ako prebehne proces žratia skontrolujem všetky aktívne prvky, či sú ešte aktívne. Ak už nejaký prvok nieje aktívny - nemá pred sebou menší prvok, tak už nikdy nikoho nezožerie a tým pádom ho môžem zo zoznamu aktívnyh vyhodiť. 
+V každom kole, teda prehliadam len tie prvky, ktoré niekoho v tomto kole zožerú. Najviac prvkov môže byť zožratých len n - koho by už žrali, takže časová zložitosť bude O(n). Potom každý prvok si musím pamätať, takže pamäť bude tiež lineárna tj. O(n).
+Riešenie je určite správne, pretože tobím to, čo sa v skutočnosti dialo - simulujem situáciu, takže nemôže nastať žiadny prípad, kedy by môj program dal zlú odpoveď.
+
+\textbf{pseudokod:}
+
+Všetky prvky oznacim ako aktivne.\\
+.\hspace{40pt}pokial je ešte nejaký aktívny prvok\\
+.\hspace{70pt}prejdi všetky aktívne prvky\\
+.\hspace{100pt}pre každý aktívny prvok zožer toho čo máš pred sebou\\
+.\hspace{100pt} zožratie  = vymaž ho z listu aktívnych a aj z listu všetkých\\
+.\hspace{50pt}pre každý aktívny prvok	zisti, či je ešte aktívny, aj nieje, tak ho vymaž z aktívnych prvkov
+			
+
+
+
+
+\end{document}

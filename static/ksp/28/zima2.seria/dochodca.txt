@@ -1,0 +1,21 @@
+meno: Michal Korbela
+škola: gymnázium J.J Bánovce nad Bebravou
+trieda: kvinta
+Príklad è.3
+
+
+
+Najskôr troch teórie:
+
+Keïe môeme prehodi len èísla, medzi ktorımi je práve jedno èíslo, tak ak má èíslo danú pozíciu párnu, tak nikdy nemôe nadobudnú nepárnu pozíciu. To platí aj o èíslach ktoré majú nepárnu pozíciu, tie nemôu zmeni svoju pozíciu na párnu.
+
+V tom spoèíva aj program.
+Vytvorí si novı zoznam s èíslami, a to takı e v òom budú u èísla usporiadanéí pod¾a ve¾kosti a budú ma priradené èíslo také, ktoré je zvyškom po delení 2(tım zostíme èi má èíslo párnu, alebo nepárnu pozíciu. Následne porovná pozíciu daného èísla v pôvodnom zozname s novım (preusporiadanım) a ak jej zvyšok po delení 2 nesúhlasí zastavı beh programu a vypíše "nie".
+
+
+èasová zloitos:
+O(4*N) + O(N°2) N je poèet èísel
+
+Pamäová zloitos:
+
+6N + 2000N

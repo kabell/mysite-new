@@ -1,0 +1,21 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.4 - Popis
+
+
+
+Na zaèiatku je nutné, zapamäta si kamarátstva.
+tie si zapíšeme do po¾a "pole".
+
+Potom zaèneme testova:
+Ak nemá nejakı iak aspoò dvoch kamarátov je nám naniè. Ak by mal by v 3 èlennom drustve musí sa kamaráti s tımi 2.
+Ak nájdeme takého iaka, ktorı s kamaráti  s aspoò dvomi iakmi tak ich pokladajme za 2. a 3. èlena tımu.
+Potom u len otestujeme èi sa 2. kamaráti s tretím ak áno, tak máme tım.
+Takto postupujeme a kım neprídeme ku n-2 iakovi. n-1 iaka u testova nemusíme, pretoe ten sa nanajvíš môe kamaráti len s n-tım iakom.
+Iné tımy dosta nemôme, pretoe ak by mal by niekto v nejakov tıme a nájdeme tım v ktorom sa nachádzajú v tom tıme v ktorom by mal by, tak mu u zostáva len 1 kamarátstvo - a tım pádom ho nemôme nikde zaradi. Existuje vdy len urèitı poèet tımov ktorı sa dá získa z danıch kamarátstiev.
+
+
+Èasová zloitos: závisí to od poètu iakov tj. je lineárna O(N)
+Pamäová zloitos tie závisí od poètu iakov O(N)

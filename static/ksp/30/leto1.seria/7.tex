@@ -1,0 +1,48 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage{listings}
+\usepackage{fancyhdr} 
+
+\usepackage[utf8]{inputenc}   % pro unicode UTF-8
+\setlength{\hoffset}{-1.8cm} 
+\setlength{\voffset}{-2cm}
+\setlength{\textheight}{24.0cm} 
+\setlength{\textwidth}{17cm}
+
+\title{KSP 2013 3.séria 4.úloha}
+\author{Michal Korbela}
+
+\begin{document}
+
+Keď sa pozrieme na nejakú dvojicu žiakov vidíme, že mohli nastať len 3 prípady. Prvý prešiel za druhého, alebo prvý prešiel pred prvého, alebo sa nejak posunuli, ale vždy bol druhý za prvým. Máme 5 fotiek, takže určite na 3 fotkách budú v rovnakom poradí, ako majú byť. Takže nám ich stačí len utriediť. Porovnávaciu funkciu môžme spraviť tak, že na vstupe dostaneme 2 žiakov a už sa len pozrieme na všetky fotky a vrátime poradie týchto 2 žiakov, ako sú na väčšine záberov.
+
+Triediť môžme sortom ktorý je v knižnici algorithm, takže čas bude O(n.log n)
+\newline
+
+pri funkcii porovnávania prezrieme všetky fotky tak, že budeme mať v poli pod indexom uloženú pozíciu daného žiaka na fotke. Takže to nám zaberie lineárny čas na načítanie a spracovanie.
+Takže výsledný čas sa nám nijak nezhorší.
+
+Pamäť: Musíme si pamätať všetky fotky, takže O(n), kde je počet študentov.
+\\
+
+\textbf{Pseudokod:}\\
+\begin{lstlisting}
+for(i=1 to 5 do)
+for(j=1 to n do)
+nacitaj ziaka
+pole[i][ziak]=j;
+
+funkcia compare(ziak1,ziak2){
+pocet=0;
+for i=1 to 5
+if(pole[i][ziak2]>pole[i][ziak1]) pocet++
+
+
+if(pocet>2) return true;
+return false;
+}
+\end{lstlisting}
+
+
+Riešenie dá vždy určite správny výsledok, pretože žiakov vieme jednoznačne utriediť podľa väčšiny polôh v akých sú jednotlivé dvojice.
+\end{document}

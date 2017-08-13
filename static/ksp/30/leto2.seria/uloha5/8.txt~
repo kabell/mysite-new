@@ -1,0 +1,2 @@
+ab
+s/(.*)/\1_abbccdcdcdecedcdeecedcedefdcdcdidecgceedeecgcdchhdcdecgeeecedcgidcdiegcdefeedefdfgc/; s/j/aai/g;s/i/aah/g;s/h/aag/g;s/g/aaf/g;s/f/aae/g;s/e/aad/g;s/d/aac/g;s/c/ab/g;s/^(.*)_(\1a*b).*$/\2/

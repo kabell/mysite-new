@@ -1,0 +1,1 @@
+Program pracuje na princípe, e vyh¾adá medzeru v reazci, vyberie èíslo, prekonvertuje na èíselnı typ a porovná.

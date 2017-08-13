@@ -1,0 +1,95 @@
+program kombinacie;
+
+var pole:array[1..1000] of longint;
+s: array[1..1000] of longint;
+i,i1,i2,x,y,n,konec,temp,max,obsadene,error: longint;
+ok,cont:boolean;
+
+
+procedure kombinacie(konec:longint);
+begin
+writeln('funkcia');
+i2:=0;
+repeat
+inc(i2);
+
+for i:=1 to i2-1 do
+s[i]:=i;
+if i2=0 then
+s[1]:=0
+else
+s[i+1]:=i;
+repeat
+
+i:=i2;
+writeln('funkcia1');
+ok:=false;
+	repeat
+
+	if s[i]=n-i2+i then
+	dec(i)
+
+
+	else begin
+	inc(s[i]);
+	x:=1;
+	for i1:=i+1 to i2 do begin
+	s[i1]:=s[i]+x;
+	inc(x);
+
+
+end;
+	ok:=true;
+	end;
+
+writeln('funkcia2');
+until ok=true;
+temp:=0;
+writeln('funkcia3');
+for i1:=1 to i2 do begin
+temp:=temp+pole[s[i1]];
+end;
+writeln('funkcia4');
+readln;
+if temp=konec then cont:=true;
+
+
+until (s[1]=n-i2+1) or (temp=konec);
+until (i2=n) or (temp=konec);
+end;
+
+begin
+readln(n);
+
+for i:=1 to n do
+read(pole[i]);
+
+
+readln(max);
+
+repeat
+for i:=1 to n do
+s[i]:=0;
+kombinacie(obsadene+max-error);
+if cont=true then begin
+obsadene:=obsadene+max-error;
+cont:=false;
+error:=0;
+end
+else begin
+inc(error);
+end;
+writeln(obsadene,' ',error);
+readln;
+until error=max;
+writeln(obsadene);
+
+
+
+
+
+
+
+
+readln;
+end.

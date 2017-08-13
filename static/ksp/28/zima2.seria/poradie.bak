@@ -1,0 +1,33 @@
+program poradie;
+
+uses crt;
+var i,cislo:integer;
+c: array[1..1000] of integer;
+begin
+clrscr;
+writeln('zadajte pocet cisel: ');
+readln(cislo);
+
+writeln('zadajte cisla> ');
+
+for i:=1 to cislo do
+Read(c[i]);
+
+if c[1] < c[2] then begin
+write(c[1],' ');
+if c[2] < c[3] then write(c[3],' ',c[2],' ')
+else write(c[2],' ',c[3]);
+end
+else begin
+ write(c[2],' ');
+ if c[3] < c[1] then write(c[1],' ',c[3],' ')
+else write(c[3],' ',c[1],' ')
+end;
+if cislo > 4 then begin
+for i:=4 to cislo do
+begin
+write(c[i],' ');
+end;
+end;
+readln;
+end.

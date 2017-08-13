@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+#include <vector>
+using namespace std;
+
+void hull(void);
+int ccw(point a, point b, point c);
+void insert(int i);
+
+
+
+point p[maxn];	
+point o[2*maxn];	/* obal */
+int np, no; 
+
+
+void hull(void)
+{
+  int i;
+  /* zaèíname */
+  o[0]=p[0]; o[1]=p[1];
+  no=2;
+  /* dolný obal */
+  for(i=2;i=0;i--)
+    insert(i);
+  /* obal sú body o[0..no-1] */
+}
+
+
+int ccw(point a, point b, point c)
+{ 
+  /* <0 doprava, =0 rovno, >0 do¾ava */
+  return(c.x-a.x)*(c.y-b.y) – 
+        (c.x-b.x)*(c.y-a.y);
+} /* vekotorový súèin */
+
+void insert(int i)
+{
+  /* pokým sa toèíme doprava */
+  while (no>=2 && 
+    ccw(o[no-2],o[no-1],p[i]) < 0)
+      no--;
+  /* nový bod */
+  o[no++]=p[i];
+}
+
+
+int main(){
+
+
+
+
+
+
+
+
+
+}
+
+
+
+

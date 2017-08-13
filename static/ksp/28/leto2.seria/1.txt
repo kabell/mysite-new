@@ -1,0 +1,13 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.1 - Popis
+
+
+V tomto príklade vôbec nezáleí na tom, ktorého si zavolá, lebo nás zaujíma len poèet v rade(je nám jedno, èi si zavolá s najdlhšími vlasami, keï vieme, e si zavolá jedného).
+To spôsobí, e ak je na vstupe prirodzené èíslo (chlapec postavenı v rade s nejakou dlkou vlasov ) tak sa iba k radu pripoèíta 1. Ak je na vstupe 0 - niekoho si zavolá, tak sa najskôr rad porovná z najdlhším radom, èo u bol, a ak je väèší, tak sa prepíše, ale ak nie tak sa len odpoèíta jeden(zavolá si ho dnu)
+
+
+Èasová zloitos je n - kde n je poèet v rade - musíme naèíta vstup a hneï aj porovnáva
+Pamäová zloitos je konštantná, pretoe si pamätáme len najdlhší rad ktorı kedy bol, súèasnı rad a n - poèet ¾udí.

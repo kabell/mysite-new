@@ -1,0 +1,17 @@
+{% extends 'page_template.html' %}
+{% load static %}
+{% block body %}
+<script src="{%  static 'ckeditor/ckeditor.js' %}"></script>
+
+    <form method="post" action="{% url 'page_edit' form.id.value %}" class="form-horizontal">
+        {% csrf_token %}
+        {% autoescape off %}
+        <fieldset>
+            <div class="form-group">
+        {{ form.as_p }}
+        {% endautoescape %}
+        <input class="btn btn-primary" type="submit" value="Odošli" />
+        </div>
+      </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,64 @@
+﻿Meno: Michal Korbela
+trieda: sexta
+škola: Gymnázium J.J. Bánovce
+úloha č.2
+
+Čo vieme o počte výmen?? Ak chceme dostať nejaké P alebo M niekam, tak počet výmen sa bude rovnať absolútna hodnota z ich rozdielu.
+takže pôjdeme od začiatku, a ak tam nebude potrebná zelenina - ďalej už len M a P, tak bude hľadať nejaké čo najbližšie a s tým ho vymení.
+Tým pádom pamäťová zložitosť bude O(N) - zapamätáme si len P a M a časová tiež O(N.n/2), pretože súčet vzdialeností(rozdielov pozícii) nech už prehadzujeme akokoľvek je max n-1+n-3+n-5...1takže dokopy to je n*(n/2)
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+
+int main(){
+    long long n;
+    cin >> n;
+string a,b;
+    
+   cin>>a>>b;
+
+   long p=0;
+   long m=0;
+   long long sum=0;                  						 načítanie a deklarácia premenných
+
+   
+   for(long i=0;i<=n;i++){							prehľadávame 1 pole, v ktorom sú pomiešané P a M
+            long pos=0;
+            if(a[i]!=b[i]){							ak sa zistí nezhoda
+                           if(b[i]=='P'){pos=b.find_first_of('M',i+1);		hľadá sa najbližšia druhá zelenina - v tomto prípade M
+                           m=pos;
+
+                           b[i]='M';
+                           b[pos]='P';						vymenia sa nájdené zeleniny
+
+                           }
+                           else{ pos=b.find_first_of('P',i+1);			ak sa má hľadať P hľadáme ďalej
+                           
+                           p=pos;
+
+                           b[i]='P';
+                           b[pos]='M';}						vymenia sa 
+
+                                                      sum+=pos-i;		pripočítame výmeny
+
+                           }
+
+                           }
+                           
+                           
+                           
+                           cout<<sum<<endl;					vypíšeme výsledok
+                           
+
+cin.get();
+cin.get();
+}

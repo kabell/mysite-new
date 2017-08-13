@@ -1,0 +1,34 @@
+
+program vykricniky;
+uses crt;
+var X,Y,a,z: string;
+pos1,pos2:shortint;
+m:integer;
+b,c :longint;
+   
+
+begin
+ clrscr;
+write('x: ');{zadávanie vstupov}{}
+ReadLn(X);
+write('y: ');
+ readln(Y);
+
+pos1 := Pos(' ',x);{ urèí sa poloha medzere tj. kde èíslo konèí}
+z := copy(X, 1, pos1-1);{èíslo sa skopíruje}
+val(Z, b,m);{èíslo sa prekonvertuje z typu string na longint}
+
+pos2:= Pos(' ',Y);{ urèí sa poloha medzere tj. kde èíslo konèí}
+a := Copy(Y, 1, pos2-1);{èíslo sa skopíruje}
+val(a, c,m);{èíslo sa prekonvertuje z typu string na longint}
+
+
+if b<C then writeln(Y);{porovnávanie èísel}
+if C<b then writeln(X);
+if C=B then writeln('ROVNAKE');
+
+  readln;
+end.
+    
+    
+

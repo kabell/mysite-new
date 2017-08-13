@@ -1,0 +1,7 @@
+Na tento program som pouil 3 cykly for a to:
+1. na vypísanie riadku ktorı pozostáva z + a -
+2. na vypísanie riadku ktorı pozostáva z | a  
+3. aby sme vedeli ko¾ko krát máme  cykly 1. a 2. zopakova tj. ko¾ko bude riadkov
+
+na konci riadkov je navyše ešte jeden znak - na ukonèenie riadka
+a na konci ståpcov je ešte jeden riadok (úplne dole) na ukonèenie ståpcov

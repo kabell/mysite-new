@@ -1,0 +1,39 @@
+Meno: Michal Korbela
+Škola: Gybmnázium J.J. Bánovce nad B. Radlinského 665/2, 95701
+Adresa domov: Brezolupy 160, 95701
+Trieda: kvinta
+Úloha è.5 - Popis
+
+
+
+Program si zapíše len poèet domín rovnakého druhu - èo vedie ku konštantnej pamäovej zloitosti o(1).
+Bude si ich zapisova do tabu¾ky kde riadok a ståpec urèujú èísla na domine + 1 aby sme predišli šahaniu mimo po¾a a vrí vıpise èohoko¾vek zas všetko zníime o 1. Tabu¾ka bude ma rozmery 7*7 polí.
+ Aby sa nám èísla neopakovali vyuijeme len polovicu tabu¾ky a to tak e budeme dominá zapisova tak:
+Ak na domine budú 2 rovnaké èísla - toto domino si nazveme špeciálne a budú sa zapisova do tabu¾ky so súradnicami a,a kde a sú èísla na domine.
+Ak budú na domine 2 rôzne èísla tak si vyberieme jedno z nich a oznaèíme ho a a druhé b. Zapíšeme ho do okienka takého, ak je a<b, tak a urèuje ståpec a b riadok a ak je b<a tak a urèuje riadoka b ståpec.
+Do tabu¾ky znaèíme len poèty domín. Tabu¾ka sa nachádza v poli "pole".
+informácie o èíslach si znaèíme v poli "cisla" a znaèíme si len poèet jednotlivıch èísel na dominách - pozor nie špeciálnych.
+
+
+Prvé èo zaèneme testova sú poèty nepárnych èísel. Tie dostaneme zvyškovım delením poètov èísel(informácie v poli cisla). Nepárnych èísel môe by len 0 alebo 2. Ak bude nepárnych èísel 0 znamená to, e rad nemá koniec môme zaèa uklada od hociktorého domina a vdy to bude moné pouklada ak vdy keï to bude moné tak vyloíme aj všetky špeciálne dominá.
+Ak bude poèet nepárnych èísel 2 znamená to, e rad má zaèiatok a koniec - dá sa pouklada, ale len vtedy , keï ho budeme uklada pod¾a nasledujúcich pravidiel: vyloíme všetky špeciálne dominá ktoré majú na sebe èísla, ktorıch je nepárny poèet(vyberieme si z nich jedno a oznaèíme ho a, druhé bude b). Potom vyloíme domino ktoré obsahuje èíslo a. Potom si oznaèíme jedno domino ktoré odsahuje èíslo b( pozor nie špeciálne) tak aby sme ho nevyhodili skôr ako má by - èie na koniec. Potom môme zaèa uklada dominá v ako chceme a zase s tım, e ak bude moné vyhodi špeciálne dominá, tak ich vyloíme.
+Ak u nebudeme ma èo vyhodi, vyhodíme posledné domino a vypíšeme všetky špeciálne dominá( ak ešte zostali).
+
+Ale pred tım ako ich zaèneme vypisova, musíme zisti, èi sa dajú pouklada( to neznamená, e keï rad má zaèiatok a koniec e sa dá pouklada môu to by n kruhov - 0 koncov, alebo n kruhov a 1 rad.....)
+
+To zaèneme testova tak, e si zvolíme jedno domino. Ak má by toto domino v rade, tak sa vieme pomocou tohto domina dosta k hociktorému dominu.
+Testovanie spoèíva v tom, e budeme h¾ada také dominá, ktoré obsahujú jedno èíslo z domina. Ak nejaké nájdeme(moe ich by 5 - jedno u máme) tak zaèneme testova tie, a pokım budú všetky dominá otestované.
+Potom skontrolujeme, èi všetky dominá boli prezreté, ak áno, tak sme vyhrali, a môeme ís vypisova, ak nie tak máme smolu vypíšeme Nedá sa.
+
+
+Vypisovanie:
+Ak rad nemá zaèiatok a koniec - nájdeme si nejaké domino, vypíšeme ho a budeme h¾ada ïa¾šie také ktoré obsahuje posledné èíslo na domine. Vdy keï to bude moné vypíšeme špeciálne dominá ( je dobré sa ich zbavi, lebo sa ich u mono nebude da zbavi.)
+Ak existuje taká situácuia e existujú, len špeciálne dominá neprebehne ani náš cyklus vıpisu, ale hneï sa vypíšu.
+
+
+
+Ak má rad zaèiatoka a koniec, tak ako prvé vypíšeme špeciálne dominá toho èísla ktoré má by na zaèiatku ( èíslo a), potom vypíšeme domino, ktoré obsahuje èíslo a.Potom si oznaèíme koniec  - domino ktoré má by na konci -  a to urobíme tak e vymaeme jedno domino ktoré má by na konci a zaèneme vypisova dominá. Ak u nenájdeme také domino ktoré potrebujeme vypíšeme posledné domino, a to tak, e vieme e to domino musí zaèína na èíslo ktoré je na konci radu. Èie vypíšeme znova èíslo ktoré má by na konci radu a za ním èíslo b. A urèite je to domino ktoré sme vymazali. Potom vypíšeme u len špeciálne dominá( ak existujú).
+
+
+Èo sa tıka pamäovej zloitosti - ako som u spomínal je konštantná - nezávisí od poètu domín.
+Èasová zloitos - tá je lineárna - záleí od poètu domín O(pocet) - kde pocet je poèet domín.

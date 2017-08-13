@@ -1,0 +1,2 @@
+b
+s/a$/b/;t;s/aab/abb/;t; s/./a/g; T; s/(.*)/\1a/;

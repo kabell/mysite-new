@@ -1,0 +1,22 @@
+meno: Michal Korbela
+škola: gymnázium J.J Bánovce nad Bebravou
+trieda: kvinta
+Príklad è.5
+
+
+
+
+Program, aby nevykonal navyše iadne kroky tak postupuje takto:
+
+Pri vstupe si zráta, ko¾ko je krabíc s èíslom 1, 2, 3.
+
+Potom zaène kontrolova èísla od 1 po a, kde  a je poèet krabíc s èíslom 1.
+Ak namiesto 1 je dvojka, tak zaène h¾ada èíslo 1 (toto èíslo urèite existuje, ale je niekde inde) najskôr medzi 2. (naèo by h¾adal toto èíslo medzi 3 keby potom zas musel prehodi 2 s 3). Ak sa nenájde toto èíslo ani medzi 2, tak tak potom sa èíslo zaène h¾ada medzi 3. Keï sa toto èíslo nájde, èi u medzi 2 alebo 3 tak sa to èíslo, kde bola 1(buï medzi 2 alebo 3) prepíše na to èíslo ktoré bolo namiesto 1. Èíslo medzi jednotkami u nebudeme prepisova. Naèo!! aj tak ho u nepouijeme. Vypíšu sa pozície èísel ktoré sa vymieòali.
+Ak namiesto 1 bude 3, tak sa bude h¾ada najskôr medzi 3 a ak sa tam nenájdee, tak sa bude h¾ada medzi 2). Potom sa vykoná to èo aj v prvej podmienke. Nájdná jednotka sa prepíše èíslom ktoré blo namiesto 1). Vypíšu sa pozície èísel ktoré sa vymieòali.
+Keï sa u medzi 1 nenachádza iadne idé èíslo (prejde prvı cyklus) a nájde sa medzi dvojkami 3, tak toto èíslo nemôme nikde inde h¾ada, len medzi 3. èíslo sa prepíše èíslom ktoré bolo namiesto 2. Vypíšu sa pozície èísel ktoré sa vymieòali.
+
+Èasová zloitos:
+O(2*pocet)+O(a*(b+c)+b*c) a,b,c sú poèty 1,2,3 a poèet je poèet èísel(krabíc s mliekom)
+
+Pamäová zloitos:
+1000b + 8k b - byte, i - integer

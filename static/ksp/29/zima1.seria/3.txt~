@@ -1,0 +1,54 @@
+Keď sa lepšie pozrieme, tak nám určite stačia 2 balíky špagiet. Prvý bude mať čas varenia medzi najmenším nedovareným a najmenším rozvareným. 2. bude mať čas medzi posledným nedovareným a posledným rozvareným. Ak bude interval prvého a druhého balíka rovnaký, tak nám stačí jeden balík. Ak však aspoň z jedného balika nebude existovať, tak vypíšeme -1.
+
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+int compare (const void * a, const void * b)					funkcia potrebná pre quicksort
+{
+  return ( *(int*)a - *(int*)b );
+}
+
+
+
+int main(){
+    long n,r;
+    cin>>n>>r;
+ long pole1[100020];
+ long pole2[100020];
+
+    for(long i=0; i<n;i++)
+    cin>>pole1[i];
+    for(long i=0; i<r;i++)
+    cin>>pole2[i];								deklarácia premenných
+    
+   qsort (pole1, n, sizeof(long), compare);
+    qsort (pole2, r, sizeof(long), compare);					zotriedime, aby sme vedeli, ktoré je najväčšie a najmenšie
+    
+    if(pole1[0]<pole2[0] && pole1[n-1]<pole2[r-1]){				ak existujú obidva intervaly, varenia
+
+
+    
+   if(pole1[n-1]>pole2[0] )cout<<"2"<<endl;					ak je nieje rovnaký vypíše sa 2, ak nie, tak 1.
+   else cout<<"1"<<endl;
+   
+   
+   
+   
+   
+   
+                                       }
+                                       else cout<<"-1"<<endl;			ak interval neexituje, tak sa vypíše -1.
+                                       cin.get();
+                                       cin.get();
+                                 
+     
+                                       
+                                       }
+
+
+časová zložitosť - quicksort - max O(n.nlog)+niečo konšťantné= O(n*nogN+r*logr) a pamäťová O(r+n)-nič iné nepotrebujeme

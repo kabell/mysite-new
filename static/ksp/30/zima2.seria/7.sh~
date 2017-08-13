@@ -1,0 +1,20 @@
+#!/bin/bash
+for (( i=1; i<=60; i++ ))
+do
+for (( j=1; j<i+10; j++ ))
+do
+echo "">result1
+echo "">result2
+./7 >result1 <<<"$j $i"
+./7.1 >result2 <<<"$j $i"
+echo "$i a $j"
+
+lol=$(cat result2 | grep -f result1)
+#echo "$lol abz to bolo dobre"
+if [ "$lol" = "" ]; then
+echo "OK"
+fi
+done
+
+
+done

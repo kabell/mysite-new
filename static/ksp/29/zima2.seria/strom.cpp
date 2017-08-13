@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
+#include <map>
+#include <vector>
+using namespace std;
+
+ vector< string > P;
+
+
+void vypis(int start, int end, int znak){
+for(int i=start; i<=end; i++)
+cout<<P[i].substr(znak,P[i].length()-2)<<";";
+
+}
+
+
+
+
+
+void h(int start, int end, int znak){
+int p=start;
+int pocet=0;
+for(int i=start; i<end-1; i++){
+
+if(P[i][znak]==P[i+1][znak] ){ pocet++; }
+else{
+if(pocet<2){ vypis(p,i,znak);
+pocet=0;
+p=i+1;
+}
+else{
+cout<<P[i][znak]<<"{"<<endl;
+ h(p, i+2,znak+1);
+cout<<"}"<<endl;
+pocet=0;
+p=i+1;
+;
+}
+}
+}
+}
+
+int main(){
+string slovo;
+
+    while(cin>>slovo){
+slovo.append("0");
+
+P.push_back(slovo);
+}
+
+//vypis(0,P.size()-1,0);
+//cout<<"//////////////////////////////"<<endl;
+h(0,P.size(),0);
+
+
+
+
+}

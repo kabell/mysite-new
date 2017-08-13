@@ -1,0 +1,92 @@
+day 16.02.2009
+transfer all EUR PLN
+day 16.03.2009
+transfer all PLN EUR
+day 17.03.2009
+transfer all EUR AUD
+day 29.03.2009
+transfer all AUD EUR
+day 30.03.2009
+transfer all EUR AUD
+day 04.05.2009
+transfer all AUD EUR
+day 19.05.2009
+transfer all EUR GBP
+day 15.06.2009
+transfer all GBP EUR
+day 06.07.2009
+transfer all EUR CAD
+day 13.07.2009
+transfer all CAD EUR
+day 14.07.2009
+transfer all EUR AUD
+day 13.09.2009
+transfer all AUD EUR
+day 27.09.2009
+transfer all EUR CAD
+day 12.10.2009
+transfer all CAD EUR
+day 13.10.2009
+transfer all EUR GBP
+day 08.11.2009
+transfer all GBP EUR
+day 30.11.2009
+transfer all EUR USD
+day 14.12.2009
+transfer all USD EUR
+day 15.12.2009
+transfer all EUR USD
+day 21.12.2009
+transfer all USD AUD
+day 11.01.2010
+transfer all AUD EUR
+day 12.01.2010
+transfer all EUR USD
+day 31.01.2010
+transfer all USD EUR
+day 01.02.2010
+transfer all EUR CAD
+day 15.02.2010
+transfer all CAD RUB
+day 25.02.2010
+transfer all RUB EUR
+day 28.02.2010
+transfer all EUR CAD
+day 15.03.2010
+transfer all CAD EUR
+day 21.03.2010
+transfer all EUR USD
+day 27.03.2010
+transfer all USD EUR
+day 29.03.2010
+transfer all EUR AUD
+day 05.04.2010
+transfer all AUD EUR
+day 12.04.2010
+transfer all EUR USD
+day 17.05.2010
+transfer all USD EUR
+day 25.05.2010
+transfer all EUR USD
+day 07.06.2010
+transfer all USD EUR
+day 12.06.2010
+transfer all EUR CHF
+day 27.06.2010
+transfer all CHF CZK
+day 01.08.2010
+transfer all CZK EUR
+day 02.08.2010
+transfer all EUR CHF
+day 04.09.2010
+transfer all CHF AUD
+day 10.09.2010
+transfer all AUD EUR
+day 01.11.2010
+transfer all EUR RUB
+day 04.12.2010
+transfer all RUB EUR
+day 05.12.2010
+transfer all EUR RUB
+day 29.12.2010
+transfer all RUB EUR

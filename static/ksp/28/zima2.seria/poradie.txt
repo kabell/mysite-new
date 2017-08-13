@@ -1,0 +1,13 @@
+meno: Michal Korbela
+škola: gymnázium J.J Bánovce nad Bebravou
+trieda: kvinta
+Príklad è.1
+
+
+
+
+Princíp tohto programu spoèíva v prehodení prvıch 3 èísel, tak aby postupnos nebola klesajúca a ani stúpajúca. Pojia¾ nebude postupnos tıchto èísel stúpajúca a ani klesajúca, tak nebude ani celı reazec.
+
+Èasová zloitos je O(cislo) kde cislo je poèet èísel
+Pamäová zloitos je O(1000) pretoe je 1000 prvkov v poli
+Prvkov môe by samozrejme aj menej.

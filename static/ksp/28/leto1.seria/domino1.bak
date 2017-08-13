@@ -1,0 +1,200 @@
+var
+a,b,i,pocet,x,kon,error,i1,i2,t:integer;
+cisla:array[1..7,1..4] of integer;
+pole:array[1..100,1..2] of integer;
+
+
+begin
+
+readln(pocet);
+i1:=1;
+for i:=1 to pocet do begin
+readln(a,b);
+if a=b then begin
+cisla[a][2]:=cisla[a][2]+1;
+end
+else begin
+cisla[a][1]:=cisla[a][1]+1;
+cisla[b][1]:=cisla[b][1]+1;
+pole[i1][1]:=a;
+pole[i1][2]:=b;
+i1:=i1+1;
+end;
+
+end;
+							{nacitavanie vstupu}
+
+for i:=1 to 6 do begin
+if cisla[i][1] mod 2 = 1 then begin kon:=kon+1;
+cisla[i][3]:=1;end;
+end;							
+
+
+
+if (kon=1) or (kon=3) or (kon=4) or (kon=5) or (kon=6)  then error:=1
+else begin
+if (cisla[1][1]>0) or (cisla[2][1]>0) or (cisla[3][1]>0) or (cisla[4][1]>0) or (cisla[5][1]>0) or (cisla[6][1]>0) then begin
+
+cisla[1][4]:=pole[1][1];
+cisla[2][4]:=pole[1][2];
+for i:=3 to 6 do begin
+i1:=0;
+repeat
+i1:=i1+1;
+until (((pole[i1][1]=cisla[1][4]) or (pole[i1][1]=cisla[2][4]) or (pole[i1][1]=cisla[3][4]) or (pole[i1][1]=cisla[4][4]) or (pole[i1][1]=cisla[5][4]))
+ and ((pole[i1][2]<>cisla[1][4]) and (pole[i1][2]<>cisla[2][4]) and (pole[i1][2]<>cisla[3][4]) and (pole[i1][2]<>cisla[4][4]) and (pole[i1][2]<>cisla[5][4]))) or
+(((pole[i1][2]=cisla[1][4]) or (pole[i1][2]=cisla[2][4]) or (pole[i1][2]=cisla[3][4]) or (pole[i1][2]=cisla[4][4]) or (pole[i1][2]=cisla[5][4])) and
+((pole[i1][1]<>cisla[1][4]) and (pole[i1][1]<>cisla[2][4]) and (pole[i1][1]<>cisla[3][4]) and (pole[i1][1]<>cisla[4][4]) and (pole[i1][1]<>cisla[5][4]))) or (i1>pocet);
+
+
+
+writeln(pole[i1][1],'',pole[i1][2]);
+
+
+
+if ((pole[i1][1]=cisla[1][4]) or (pole[i1][1]=cisla[2][4]) or (pole[i1][1]=cisla[3][4]) or (pole[i1][1]=cisla[4][4]) or (pole[i1][1]=cisla[5][4])) and (i1<=pocet) then cisla[i][4]:=pole[i1][2]
+else if i1<=pocet then cisla[i][4]:=pole[i1][1];
+end;
+
+
+
+
+
+
+
+for i:=1 to 6 do begin
+i1:=0;
+if cisla[i][1]>0 then begin
+repeat
+i1:=i1+1;
+until (cisla[i1][4]=i) or (i1>6);
+if i1>6 then error:=1;
+end;
+
+
+
+
+
+
+
+end;
+
+
+end
+else begin
+for i:=1 to 6 do
+if cisla[i][2]>0 then i1:=i1+1;
+if i1>1 then error:=1
+else
+i:=0;
+repeat
+i:=i+1;
+until cisla[i][2]>0;
+x:=i;
+
+if error=1 then writeln('Neda sa')
+else begin writeln('Da sa');
+
+if kon=2 then begin
+i:=0;
+repeat
+i:=i+1;
+until cisla[i][3]=1;
+a:=cisla[i][3];
+repeat
+i:=i+1;
+until cisla[i][3]=1;
+b:=cisla[i][3];
+
+
+
+
+i:=0;
+repeat
+i:=i+1;
+until (pole[i][1]=b) or (pole[i][2]=b);
+pole[pocet+1][1]:=pole[i][1];
+pole[pocet+1][2]:=pole[i][2];
+pole[i][2]:=0;						{oznacenie konca}
+pole[i][1]:=0;
+
+
+
+
+
+if cisla[a][2]>0 then
+for i:=1 to cisla[a][2] do write(a,'',a,' ');
+i:=0;
+repeat
+i:=i+1;
+until (pole[i][1]=a) or (pole[i][2]=a);
+if pole[i][1]=a then begin
+write(pole[i][1],'',pole[i][2],' ');
+x:=pole[i][2];
+end
+else begin
+write(pole[i][2],'',pole[i][1],' ');
+x:=pole[i][1];
+end;
+pole[i][1]:=0;
+pole[i][2]:=0;						{vypisanie prvych cisel}
+end;
+
+
+
+
+							
+
+if x=0 and then begin
+i:=0;
+repeat
+i:=i+1;
+until cisla[i][1]>0;
+x:=i;
+end;							{ak nie je udany zaciatok (kon=0)}
+
+if (cisla[1][1]+cisla[2][1]+cisla[3][1]+cisla[4][1]+cisla[5][1]+cisla[6][1]) div 2 -1>0 then
+for i:=1 to (cisla[1][1]+cisla[2][1]+cisla[3][1]+cisla[4][1]+cisla[5][1]+cisla[6][1]) div 2 -1 do begin
+
+i1:=0;
+repeat
+i1:=i1+1;
+until (pole[i1][1]=x) or (pole[i1][2]=x);
+if pole[i1][1]=x then begin
+write(pole[i1][1],'',pole[i1][2],' ');
+x:=pole[i1][2];
+end
+else begin	
+write(pole[i1][2],'',pole[i1][1],' ');
+x:=pole[i1][1];
+end;
+pole[i1][1]:=0;	
+pole[i1][2]:=0;
+
+if cisla[x][2]>0 then
+for i2:=1 to cisla[x][2] do
+write(x,'',x,' ');
+end
+else
+
+if cisla[x][2]>0 then
+for i2:=1 to cisla[x][2] do
+write(x,'',x,' ');	
+
+
+
+
+
+end;
+
+
+
+
+
+
+
+
+
+readln;
+end.
+
