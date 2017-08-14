@@ -27,7 +27,7 @@
 </div>
 {% endfor %}
     <script>
-    $( document ).ready(function() {
+    $(window).on("load", function() {
 
         $('.blog-thumb img').each(function() {
             console.log($(this).width());
