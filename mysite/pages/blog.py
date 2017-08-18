@@ -133,8 +133,8 @@ class Blog(Common):
 
 
         #zakomentovane koli velkej casovej narocnosti
-        #post.views+=1
-        #post.save()
+        post.views+=1
+        post.save()
 
         return render(request, 'blog/post.html',locals())
 
