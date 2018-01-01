@@ -4,7 +4,7 @@
         <hr>
       <h2><a href="{% url 'blog_show' post.id %}">{{ post.title }}</a> {% if request|get_login %}<a href="{% url 'blog_edit' post.id %}"><span class="glyphicon glyphicon-pencil"></span></a>{% endif %}</h2>
       <h5><span class="glyphicon glyphicon-time"></span> Post by Kabell, {{ post.created }}. &nbsp; Last edit: {{ post.last_edit }}. &nbsp;
-          Tags: {% for tag in post.tags|get_all %}{{ tag.name }} {% endfor %}, views: {{ post.views }}</h5>
+          Views: {{ post.views }}</h5>
       <p>{{ post.content }}</p>
       <br><br>
       {% endautoescape %}

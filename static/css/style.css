@@ -220,25 +220,13 @@ tr:nth-child(odd){
 
 }
 
-.blog-thumb{
+.blog-thumb > img{
     float:left;
     width:150px;
     height:150px;
-    overflow: hidden;
     margin: 5px 10px;
     display: inline-block;
     vertical-align: top;
 }
 
-.landscape {
-    width: auto;
-    max-height: 150px;
-    margin-left:-25%;
-
-}
-.landscape1{
-    margin-top:-25%;
-    max-width: 150px;
-    height: auto;
-}
 

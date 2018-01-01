@@ -130,7 +130,7 @@ class Blog(Common):
 
     def show(self,request,blogid):
         post = self.get(blogid)
-
+        only_body = request.GET.get('only_body',False)
 
         #zakomentovane koli velkej casovej narocnosti
         post.views+=1

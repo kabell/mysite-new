@@ -90,6 +90,7 @@ class Page(Common):
 
     def show(self,request,pagename='home'):
         page = self.get(pagename)
+        only_body = request.GET.get('only_body',False)
         #zakomentovane koli velkej casovej narocnosti
         #page.views+=1
         #page.save()
