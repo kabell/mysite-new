@@ -34,6 +34,7 @@ class Flights(Common):
     def list(self,request):
 
         flights = Flight.objects.all()
+        sum_flights = sum(flight.length for flight in flights)
 
         return render(request,'flights/list.html',locals())
 

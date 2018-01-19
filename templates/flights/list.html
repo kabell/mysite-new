@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Lety</h1>
-
+    <label>Celková dĺžka:</label>{{ sum_flights|to_human_time }}
     <table class="table">
     <tr><th>ID</th><th>Z</th><th>Do</th><th>Dátum</th><th>Odlet</th><th>Prílet</th><th>Dĺžka</th>
         <th>Spoločnosť</th><th>Číslo&nbsp;letu</th><th>Lietadlo</th><th>Cena</th><th>Nejaký Koment</th></tr>
@@ -16,7 +16,7 @@
         <td>{{ flight.date|default_if_none:"" }}</td>
         <td>{{ flight.start|default_if_none:"" }}</td>
         <td>{{ flight.end|default_if_none:"" }}</td>
-        <td>{{ flight.length|default_if_none:"" }}</td>
+        <td>{{ flight.length|default_if_none:0|to_human_time }}</td>
         <td>{{ flight.company|default_if_none:"" }}</td>
         <td>{{ flight.flight_no|default_if_none:"" }}</td>
         <td>{{ flight.aircraft|default_if_none:"" }}</td>
