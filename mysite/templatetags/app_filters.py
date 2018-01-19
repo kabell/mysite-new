@@ -1,6 +1,9 @@
 from django.template.defaulttags import register
 import re
 from mysite.models import Blogs, MenuItem
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
 
 @register.filter
 def get_item(dictionary, key):
@@ -20,5 +23,12 @@ def get_sidebar_menu(obj):
 @register.filter
 def get_sidebar_blog(obj):
     return Blogs.objects.all().filter(deleted=False,visible=True).order_by('-id')[:5]
+
+@register.filter()
+def currency(value):
+    if not value:
+        return ""
+    value = str(value).replace(',','.')
+    return locale.currency(float(value), grouping=True).replace(' ', '&nbsp;')
 
 ###############

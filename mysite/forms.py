@@ -36,7 +36,21 @@ class LoginForm(forms.Form):
     login = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'class':'form-control'}),label='Login',required=False)
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),label='Password',required=False)
 
-
+class FlightForm(forms.Form):
+    z = forms.CharField(max_length=3,required=False)
+    do = forms.CharField(max_length=3,required=False)
+    date = forms.DateField(required=False, widget=forms.SelectDateWidget())
+    start = forms.TimeField(required=False)
+    end = forms.TimeField(required=False)
+    length = forms.IntegerField(required=False)
+    company = forms.CharField(max_length=50,required=False)
+    flight_no = forms.CharField(max_length=20,required=False)
+    seat = forms.CharField(max_length=5,required=False)
+    pos = forms.CharField(max_length=10,required=False)
+    aircraft = forms.CharField(max_length=20,required=False)
+    booking_code = forms.CharField(max_length=30,required=False)
+    price = forms.FloatField(required=False)
+    comment = forms.CharField(max_length=300,required=False)
 
 
 

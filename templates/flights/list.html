@@ -1,0 +1,33 @@
+{% extends 'page_template.html' %}
+
+{% block body %}
+    <h1>Lety</h1>
+
+    <table class="table">
+    <tr><th>ID</th><th>Z</th><th>Do</th><th>Dátum</th><th>Odlet</th><th>Prílet</th><th>Dĺžka</th>
+        <th>Spoločnosť</th><th>Číslo&nbsp;letu</th><th>Lietadlo</th><th>Cena</th><th>Nejaký Koment</th></tr>
+    <tr><td> </td></tr>
+{% for flight in flights %}
+    <tr>
+    {% autoescape off %}
+        <td>{{ forloop.counter0|add:1 }}</td>
+        <td>{{  flight.z|default_if_none:"" }}</td>
+        <td>{{ flight.do|default_if_none:"" }}</td>
+        <td>{{ flight.date|default_if_none:"" }}</td>
+        <td>{{ flight.start|default_if_none:"" }}</td>
+        <td>{{ flight.end|default_if_none:"" }}</td>
+        <td>{{ flight.length|default_if_none:"" }}</td>
+        <td>{{ flight.company|default_if_none:"" }}</td>
+        <td>{{ flight.flight_no|default_if_none:"" }}</td>
+        <td>{{ flight.aircraft|default_if_none:"" }}</td>
+        <td>{{ flight.price|currency }}</td>
+        <td>{{ flight.comment|default_if_none:"" }}</td>
+    {% endautoescape %}
+
+
+
+    </tr>
+{% endfor %}
+    </table>
+
+{% endblock %}

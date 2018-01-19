@@ -1,0 +1,16 @@
+{% extends 'page_template.html' %}
+{% load static %}
+{% block body %}
+
+    <form method="post" action="" class="form-horizontal">
+        {% csrf_token %}
+        {% autoescape off %}
+        <fieldset>
+            <div class="form-group">
+        {{ form.as_p }}
+        {% endautoescape %}
+        <input class="btn btn-primary" type="submit" value="Odošli" />
+        </div>
+      </fieldset>
+    </form>
+{% endblock %}

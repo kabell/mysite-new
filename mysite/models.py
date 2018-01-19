@@ -3,6 +3,41 @@ from django.db import models
 import datetime
 
 
+class Flight(models.Model):
+    id = models.AutoField(primary_key=True)
+    z = models.CharField(max_length=3, null=True)
+    do = models.CharField(max_length=3, null=True)
+    date = models.DateField(null=True)
+    start = models.TimeField(null=True)
+    end = models.TimeField( null=True)
+    length = models.IntegerField(null=True)
+    company = models.CharField(max_length=50, null=True)
+    flight_no = models.CharField(max_length=20, null=True)
+    seat = models.CharField(max_length=5, null=True)
+    pos = models.CharField(max_length=10, null=True)
+    aircraft = models.CharField(max_length=20, null=True)
+    booking_code = models.CharField(max_length=30, null=True)
+    price = models.FloatField(null=True)
+    comment = models.CharField(max_length=300, null=True)
+
+    def populate(self,d):
+        self.z = d.get('z')
+        self.do = d.get('do')
+        self.date = d.get('date')
+        self.start = d.get('start')
+        self.end = d.get('end')
+        self.length = d.get('length')
+        self.company = d.get('company')
+        self.flight_no = d.get('flight_no')
+        self.seat = d.get('seat')
+        self.pos = d.get('pos')
+        self.aircraft = d.get('aircraft')
+        self.booking_code = d.get('booking_code')
+        self.price = d.get('price')
+        self.comment = d.get('comment')
+
+
+
 class MenuItem(models.Model):
     id = models.AutoField(primary_key=True)
     page = models.CharField(max_length=200)

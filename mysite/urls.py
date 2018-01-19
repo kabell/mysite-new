@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.shortcuts import redirect
 from mysite.utils import upload_image
-from mysite.pages import page, menu, blog, login
+from mysite.pages import page, menu, blog, login, flights
 from mysite.models import *
 from mysite import settings
 
@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^auth/', include(login.site.urls), name='auth'),
     url(r'^page/', include(page.site.urls), name='page'),
     url(r'^menu/', include(menu.site.urls), name='menu'),
+    url(r'^flights/', include(flights.site.urls), name='menu'),
+
     url(r'^image_upload/', include(upload_image.site.urls), name='image_upload'),
 
 ]
