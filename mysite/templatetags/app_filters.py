@@ -3,7 +3,7 @@ import re
 from mysite.models import Blogs, MenuItem
 import locale
 
-locale.setlocale(locale.LC_ALL, '')
+locale.setlocale(locale.LC_ALL, 'sk_SK.UTF-8')
 
 @register.filter
 def get_item(dictionary, key):

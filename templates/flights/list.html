@@ -11,8 +11,8 @@
     <tr>
     {% autoescape off %}
         <td>{{ forloop.counter0|add:1 }}</td>
-        <td>{{  flight.z|default_if_none:"" }}</td>
-        <td>{{ flight.do|default_if_none:"" }}</td>
+        <td><a target="_blank" href="https://www.google.sk/search?q={{ flight.z }}%20airport">{{ flight.z}}</a></td>
+        <td><a target="_blank" href="https://www.google.sk/search?q={{ flight.do }}%20airport">{{ flight.do}}</a></td>
         <td>{{ flight.date|default_if_none:"" }}</td>
         <td>{{ flight.start|default_if_none:"" }}</td>
         <td>{{ flight.end|default_if_none:"" }}</td>
