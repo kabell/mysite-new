@@ -89,28 +89,17 @@ class Pages(models.Model):
 
 class Blogs(models.Model):
     id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=100)
-    title_img = models.CharField(max_length=200,default='')
-    content = models.CharField(max_length=200000)
-    trailer = models.BooleanField(default=False)
-    created = models.DateField()
-    last_edit = models.DateField()
+    title = models.CharField(max_length=100,blank=True)
+    title_img = models.CharField(max_length=200,default='',blank=True)
+    content = models.CharField(max_length=200000,blank=True)
+    trailer = models.BooleanField(default=False,blank=True)
+    created = models.DateField(auto_now_add=True)
+    last_edit = models.DateField(auto_now=True)
     tags = models.ManyToManyField(Tag)
     views = models.IntegerField(default=0)
-    visible = models.BooleanField()
+    visible = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)
 
-    def populate(self,d,new=True):
-        self.title = d.get('title', '')
-        self.title_img = d.get('title_img', '')
-
-        self.content = d.get('content', '')
-        if new:
-            self.created = d.get('created', datetime.datetime.now())
-        self.last_edit = d.get('last_edit', datetime.datetime.now())
-        self.trailer = d.get('trailer', False)
-        self.visible = d.get('visible', False)
-        self.deleted = d.get('deleted', False)

@@ -16,8 +16,8 @@ class StatsMiddleware(object):
 
         # turn on debugging in db backend to capture time
         from django.conf import settings
-        debug = settings.DEBUG
-        settings.DEBUG = False
+        #debug = settings.DEBUG
+        #settings.DEBUG = False
 
         # get number of db queries before we do anything
         n = len(connection.queries)
@@ -39,7 +39,7 @@ class StatsMiddleware(object):
         pyTime = totTime - dbTime
 
         # restore debugging setting again
-        settings.DEBUG = debug
+        #settings.DEBUG = debug
 
         stats = {
             'totTime': totTime*1000,

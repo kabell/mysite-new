@@ -3,7 +3,7 @@
 {% block body %}
 <script src="{%  static 'ckeditor/ckeditor.js' %}"></script>
 
-    <form method="post" action="{% url 'blog_edit' form.id.value %}" class="form-horizontal">
+    <form method="post" action="" class="form-horizontal">
         {% csrf_token %}
         {% autoescape off %}
         <fieldset>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from mysite.models import Flight
+from mysite.models import Flight, Blogs
 
 
 
@@ -21,13 +21,17 @@ class PageEditForm(forms.Form):
     content = forms.CharField(max_length=200000,label='Obsah',widget=forms.Textarea(attrs={'class':'ckeditor','name':'ckeditor'}),required=False)
     visible = forms.BooleanField(widget=forms.CheckboxInput(),required=False,label='Viditeľná')
 
-class BlogEditForm(forms.Form):
+class BlogEditForm(forms.ModelForm):
     id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
     title = forms.CharField(max_length=100,required=True,label='Nadpis',widget=forms.TextInput(attrs={'class':'form-control'}))
     title_img = forms.CharField(max_length=200,required=False,label='Title obrazok',widget=forms.TextInput(attrs={'class':'form-control'}))
     content = forms.CharField(max_length=200000,label='Obsah',widget=forms.Textarea(attrs={'class':'ckeditor','name':'ckeditor'}),required=False)
     visible = forms.BooleanField(widget=forms.CheckboxInput(),required=False,label='Viditeľný')
     trailer = forms.BooleanField(widget=forms.CheckboxInput(),required=False,label='Trailer')
+
+    class Meta:
+        model = Blogs
+        fields = ['title', 'title_img', 'content', 'visible', 'trailer']
 
 
 class ImageUploadForm(forms.Form):

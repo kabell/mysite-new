@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import url
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from mysite.pages.common import Common
 from mysite.models import Blogs, Tag
 from mysite.forms import BlogEditForm
 from mysite.utils.authorise import auth
+from django.urls import path
+
 
 
 
@@ -21,11 +22,11 @@ class Blog(Common):
     def get_urls(self):
 
         url_patterns = [
-            url(r'^$', self.list, name='blog_list'),
-            url(r'^new/$', self.blog_new, name='blog_new'),
-            url(r'^(\w+)/$', self.show, name='blog_show'),
-            url(r'^(\w+)/edit/$', self.edit, name='blog_edit'),
-            url(r'^(\w+)/delete/$', self.delete, name='blog_delete'),
+            path('', self.list, name='blog_list'),
+            path('new/', self.new, name='blog_new'),
+            path('<int:id>/', self.show, name='blog_show'),
+            path('<int:id>/edit', self.edit, name='blog_edit'),
+            path('<int:id>/delete', self.delete, name='blog_delete'),
         ]
 
         return url_patterns
@@ -38,99 +39,59 @@ class Blog(Common):
 
     #vypise vsetky stranky
     def list(self,request):
-        tags = Tag.objects.all()
-
-        if 'tags' not in request.session:
-            request.session['tags']={'4':True}
-
-        if 'filter' in request.POST:
-            for tag in tags:
-                if str('tag'+str(tag.id)) in request.POST:
-                    request.session['tags'][str(tag.id)]=True
-                elif request.session['tags'].get(str(tag.id),None)!=None:
-                    del request.session['tags'][str(tag.id)]
-
-        tags_on = []
-        for t in tags:
-            if request.session['tags'].get(str(t.id),None):
-                t.on = True
-                tags_on.append(t)
 
         visible = [True]
         if auth(request):
             visible.append(False)
 
-        if tags_on == []:
-            blogposts = Blogs.objects.all().filter(deleted=False,visible__in=visible).distinct().order_by('-id')
-        else:
-            blogposts = Blogs.objects.all().filter(deleted=False,visible__in=visible,tags__in=tags_on).distinct().order_by('-id')
-        request.session['lama']='Kabell'
+        blogposts = Blogs.objects.all().filter(deleted=False,visible__in=visible).distinct().order_by('-id')
 
         return render(request,'blog/list.html',locals())
 
-    def blog_new(self,request):
+    def new(self,request):
         if not auth(request):
             return redirect('login')
 
-        form = BlogEditForm({'visible':True,'id':0})
-        tags = Tag.objects.all()
-
-
-        return render(request, 'blog/form.html',locals())
-
-    def edit(self,request,blogid):
-        if not auth(request):
-            return redirect('login')
-
-        #ak prisla poziadavka na update, tak updatneme
         if request.method == 'POST':
             form = BlogEditForm(request.POST)
-            if form.is_valid():
-                try:
-                    obj = Blogs.objects.get(id=request.POST.get('id',0))
-                    obj.populate(request.POST,False)
+            new_blog = form.save()
+            return redirect('blog_show', id=new_blog.id)
 
-                except (Blogs.DoesNotExist, ValueError):
-                    obj = Blogs()
-                    obj.populate(request.POST)
-
-                obj.save()
-                #update tags
-                tags = Tag.objects.all()
-                obj.tags = []
-
-                for tag in tags:
-                    if 'tag'+str(tag.id) in request.POST:
-                        obj.tags.add(tag)
-                obj.save()
-            return self.show(request,obj.id)
-
-        post = self.get(blogid)
-        form = BlogEditForm(post.__dict__)
-
-        tags = Tag.objects.all()
-        my_tags = post.tags.all()
-        for tag in tags:
-            for my_tag in my_tags:
-                if tag.id == my_tag.id:
-                    tag.on = True
-
+        form = BlogEditForm()
         return render(request, 'blog/form.html',locals())
 
-    def delete(self,request,blogid):
+    def edit(self,request, id):
         if not auth(request):
             return redirect('login')
 
-        blog = self.get(blogid)
+        blog = get_object_or_404(Blogs,id=id)
+        if request.method == 'POST':
+            form = BlogEditForm(request.POST, instance=blog)
+            if form.is_valid():
+                form.save()
+                return redirect('blog_show',id=id)
+
+        else:
+            form = BlogEditForm(instance=blog)
+
+        return render(request, 'blog/form.html',locals())
+
+    def delete(self,request,id):
+        if not auth(request):
+            return redirect('login')
+
+        blog = get_object_or_404(Blogs,id=id)
         if blog:
             blog.deleted = True
             blog.save()
-        return self.list(request)
+        return redirect('blog_list')
 
 
-    def show(self,request,blogid):
-        post = self.get(blogid)
-        only_body = request.GET.get('only_body',False)
+    def show(self,request,id):
+        if not auth(request):
+            post = get_object_or_404(Blogs,id=id, visible=True)
+        else:
+            post = get_object_or_404(Blogs,id=id)
 
         #zakomentovane koli velkej casovej narocnosti
         post.views+=1
@@ -138,11 +99,5 @@ class Blog(Common):
 
         return render(request, 'blog/post.html',locals())
 
-    def get(self,blogid):
-        try:
-            post = Blogs.objects.get(id=blogid)
-        except Blogs.DoesNotExist:
-            return None
-        return post
 
 site = Blog()
