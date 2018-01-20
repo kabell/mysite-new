@@ -22,6 +22,10 @@
         <td>{{ flight.aircraft|default_if_none:"" }}</td>
         <td>{{ flight.price|currency }}</td>
         <td>{{ flight.comment|default_if_none:"" }}</td>
+        {% if request|get_login %}
+            <td><a href="{% url 'edit_flight' flight.id %}">Edit</a></td>
+            <td><a href="{% url 'delete_flight' flight.id %}">Delete</a></td>
+        {% endif %}
     {% endautoescape %}
 
 

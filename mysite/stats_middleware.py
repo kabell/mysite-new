@@ -5,13 +5,19 @@ from django.db import connection
 from functools import reduce
 
 class StatsMiddleware(object):
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        return self.get_response(request)
+
 
     def process_view(self, request, view_func, view_args, view_kwargs):
 
         # turn on debugging in db backend to capture time
         from django.conf import settings
         debug = settings.DEBUG
-        settings.DEBUG = True
+        settings.DEBUG = False
 
         # get number of db queries before we do anything
         n = len(connection.queries)
