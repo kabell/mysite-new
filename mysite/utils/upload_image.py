@@ -2,7 +2,7 @@
 from django.conf.urls import url
 from django.shortcuts import render
 from mysite.forms import ImageUploadForm
-import random, datetime,PIL
+import random, datetime ,PIL
 from PIL import Image
 import mysite.settings
 import os

@@ -83,7 +83,7 @@ class Pages(models.Model):
         self.created = d.get('created', datetime.datetime.now())
         self.last_edit = d.get('last_edit', datetime.datetime.now())
         #self.tags = d.get('tags', '')
-        self.visible = d.get('visible', False)
+        self.visible = d.get('visible', False)!=False
         self.deleted = d.get('deleted', False)
 
 
